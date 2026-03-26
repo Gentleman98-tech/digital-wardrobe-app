@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <title>Mein Kleiderschrank</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="apple-touch-icon" sizes="180x180" href="icon-180.png">
+<link rel="apple-touch-icon" sizes="512x512" href="icon-512.png">
+<link rel="icon" type="image/png" href="icon.png">
+</head>
+<body>
+
+
+
+
+
+
+
+
+<nav id="sideMenu" class="hidden">
+  <ul>
+    <li data-page="home" class="home-item" title="Start">
+  <svg width="26" height="26" viewBox="0 0 24 24" fill="none">
+    <path d="M3 10.5L12 3l9 7.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M5 9.5V21h14V9.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M9 21v-6h6v6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  </svg>
+</li>
+    <li data-page="closet">Mein Kleiderschrank</li>
+    <li data-page="outfits">Outfits</li>
+    <li data-page="inspiration">Inspiration</li>
+  </ul>
+</nav>
+
+<header>
+  <button id="menuBtn">☰</button>
+</header>
+
+<main id="content">
+  <div class="glass-box">
+    <h1>Hallo Timon</h1>
+    <p>Willkommen in deinem digitalen Kleiderschrank</p>
+  </div>
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="app.js"></script>              
+</body>
+</html>

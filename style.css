@@ -1,0 +1,1085 @@
+/* =========================
+   GLOBAL
+========================= */
+:root{
+  --gold-light: rgba(230, 211, 163, 0.55);
+  --gold-dark: rgba(184, 153, 74, 0.95);
+  --card-gap: 16px;
+  --card-w: 170px;
+}
+
+* { box-sizing: border-box; }
+
+body, input, select, button {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+/* Hintergrundbild mit Blur */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-image: url("images/closet.jpeg");
+  background-size: cover;
+  background-position: center;
+  filter: blur(8px);
+  transform: scale(1.05);
+  z-index: -2;
+}
+
+/* leichte Abdunklung */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.25);
+  z-index: -1;
+}
+
+/* Main Container */
+main#content{
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* =========================
+   HOME: GLASS BOX
+========================= */
+.glass-box {
+  background: rgba(255, 255, 255, 0.62);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  padding: 60px 90px;
+  border-radius: 24px;
+  text-align: center;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.22);
+  transform: scale(1.2);
+}
+
+.glass-box h1 {
+  color: #111;
+  margin: 0 0 14px;
+  font-size: 2.4rem;
+}
+
+.glass-box p {
+  color: #333;
+  margin: 0;
+  font-size: 1.3rem;
+}
+
+/* =========================
+   HEADER + BURGER
+========================= */
+header {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  z-index: 3000;
+}
+
+#menuBtn {
+  font-size: 60px;
+  background: none;
+  border: none;
+  color: rgba(230, 211, 163, 0.95);
+  cursor: pointer;
+  line-height: 1;
+}
+
+/* =========================
+   SIDE MENU (Glass)
+========================= */
+nav#sideMenu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 280px;
+  height: 100%;
+  padding-top: 90px;
+
+  background: rgba(18, 63, 50, 0.55);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+
+  border-right: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+
+  transform: translateX(-100%);
+  transition: transform 0.25s ease;
+  z-index: 2500;
+}
+
+nav#sideMenu.open {
+  transform: translateX(0);
+}
+
+nav#sideMenu ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+nav#sideMenu li {
+  margin: 10px 14px;
+  padding: 14px 16px;
+  border-radius: 14px;
+  color: rgba(230, 211, 163, 0.95);
+  cursor: pointer;
+  transition: transform 0.15s ease, background 0.15s ease, box-shadow 0.15s ease;
+}
+
+nav#sideMenu li:hover {
+  background: rgba(255, 255, 255, 0.18);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+  transform: translateX(4px);
+}
+
+/* Home SVG */
+nav#sideMenu li.home-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+nav#sideMenu li.home-item svg {
+  width: 26px;
+  height: 26px;
+  color: rgba(230, 211, 163, 0.95);
+  transition: transform 0.15s ease;
+}
+
+nav#sideMenu li.home-item:hover svg {
+  transform: scale(1.12);
+}
+
+/* =========================
+   CLOSET: BIG PANEL
+========================= */
+.closet-panel {
+  width: min(1200px, 92vw);
+  height: calc(100vh - 110px); /* lässt Rand-Hintergrund sichtbar */
+  margin: 70px auto 40px;
+  padding: 22px 22px 18px;
+
+  background: rgba(255, 255, 255, 0.55);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+
+  border: 1px solid rgba(255,255,255,0.25);
+  border-radius: 26px;
+  box-shadow: 0 18px 70px rgba(0,0,0,0.25);
+
+  overflow: auto;
+}
+
+.closet-panel,
+.outfits-panel {
+  width: min(1180px, calc(100vw - 32px));
+  margin: 18px auto;
+  box-sizing: border-box;
+}
+
+.filter-bar,
+.subfilter-bar,
+.outfit-global-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+}
+
+.item-row,
+.item-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+  gap: 18px;
+}
+
+.item-card {
+  width: 100%;
+  max-width: 210px;
+  justify-self: start;
+}
+
+/* Topbar: Titel + Add Button */
+.closet-topbar{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  position:relative;
+}
+
+.closet-title {
+  margin: 0 0 14px;
+  text-align: center;
+  color: #111;
+  font-size: 2.6rem;
+}
+
+/* Add Button */
+.add-btn{
+  position:absolute;
+  right: 14px;
+  top: 2px;
+  padding: 12px 16px;
+  border-radius: 14px;
+  border: 1px solid rgba(0,0,0,0.10);
+  background: var(--gold-dark);
+  color: #111;
+  font-weight: 900;
+  font-size: 1rem;
+  cursor:pointer;
+}
+.add-btn:hover{ filter: brightness(1.05); }
+
+/* =========================
+   FILTER STRIP + BUTTONS
+========================= */
+.filter-strip {
+  background: rgba(0, 0, 0, 0.06);
+  border: 1px solid rgba(0,0,0,0.06);
+  border-radius: 18px;
+  padding: 12px 12px;
+}
+
+.filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: center;
+  align-items: center;
+}
+
+.filter-btn {
+  padding: 14px 20px;
+  border-radius: 16px;
+  border: 1px solid rgba(0,0,0,0.10);
+  background: var(--gold-light);
+  color: #1a1a1a;
+  font-size: 1.15rem;
+  font-weight: 800;
+  cursor: pointer;
+  transition: transform 0.12s ease, filter 0.12s ease, background 0.12s ease;
+}
+
+.filter-btn:hover {
+  transform: translateY(-1px);
+  filter: brightness(1.03);
+}
+
+.filter-btn.active {
+  background: var(--gold-dark);
+  border-color: rgba(184, 153, 74, 1);
+  color: #111;
+}
+
+/* "Alle" optisch separieren */
+.filter-bar .filter-btn:first-child {
+  margin-right: 24px;
+  position: relative;
+}
+
+/* Trennstrich schwarz, länger & sichtbar */
+.filter-bar .filter-btn:first-child::after {
+  content: "";
+  position: absolute;
+  right: -16px;
+  top: 8%;
+  height: 84%;
+  width: 2px;
+  background: rgba(0, 0, 0, 0.65);
+  border-radius: 2px;
+}
+
+/* =========================
+   DIVIDERS + SECTION TITLE
+========================= */
+.thin-divider {
+  height: 1px;
+  background: rgba(0,0,0,0.12);
+  margin: 16px 6px 14px;
+}
+
+.section-title {
+  margin: 12px 6px 10px;
+  text-align: left;
+  color: rgba(0,0,0,0.72);
+  font-weight: 800;
+  font-size: 1.2rem;
+}
+
+/* =========================
+   ITEM LAYOUTS
+   - wir nutzen überall item-row,
+     aber item-grid bleibt drin falls du später brauchst
+========================= */
+.item-row {
+  display: flex;
+  gap: var(--card-gap);
+  padding: 0 10px 12px;
+  overflow-x: auto;
+  justify-content: flex-start;
+}
+
+.item-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, var(--card-w));
+  gap: var(--card-gap);
+  padding: 0 10px 12px;
+  justify-content: flex-start;
+}
+
+/* Cards: schmal & hochkant */
+.item-card {
+  width: var(--card-w);
+  max-width: var(--card-w);
+  flex: 0 0 var(--card-w);
+
+  background: rgba(255,255,255,0.55);
+  border: 1px solid rgba(0,0,0,0.08);
+  border-radius: 18px;
+  padding: 12px;
+  box-shadow: 0 10px 24px rgba(0,0,0,0.12);
+}
+
+.item-card img {
+  width: 100%;
+  height: 190px;
+  object-fit: cover;
+  border-radius: 14px;
+  display: block;
+}
+
+.item-card .item-name {
+  margin: 10px 4px 2px;
+  color: #111;
+  font-weight: 800;
+}
+
+.item-card .item-meta {
+  margin: 0 4px 6px;
+  color: rgba(0,0,0,0.62);
+  font-size: 0.9rem;
+}
+
+/* =========================
+   MODAL (Add Item)
+========================= */
+#addModal {
+  position: fixed;
+  inset: 0;
+  z-index: 5000;
+}
+
+.modal-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.35);
+}
+
+.modal-card {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: min(520px, 92vw);
+
+  background: rgba(255,255,255,0.65);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-radius: 22px;
+  border: 1px solid rgba(255,255,255,0.25);
+  box-shadow: 0 22px 80px rgba(0,0,0,0.35);
+
+  padding: 18px 18px 14px;
+}
+
+.modal-card h2 {
+  margin: 0 0 12px;
+  color: #111;
+}
+
+.modal-card label {
+  display: block;
+  margin: 10px 0 6px;
+  color: rgba(0,0,0,0.7);
+  font-weight: 800;
+}
+
+.modal-card input,
+.modal-card select {
+  width: 100%;
+  padding: 12px 12px;
+  border-radius: 14px;
+  border: 1px solid rgba(0,0,0,0.12);
+  background: rgba(255,255,255,0.8);
+  font-size: 1rem;
+}
+
+.modal-actions {
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+  margin-top: 14px;
+}
+
+.modal-actions button {
+  padding: 12px 16px;
+  border-radius: 14px;
+  border: 1px solid rgba(0,0,0,0.10);
+  cursor: pointer;
+  font-weight: 900;
+}
+
+#cancelBtn {
+  background: rgba(255,255,255,0.8);
+}
+
+#saveBtn {
+  background: var(--gold-dark);
+}
+
+/* Dropdown Kategorien – Obergruppen */
+.outfit-mini-select optgroup {
+  font-weight: 700;
+  color: rgba(0,0,0,0.42);
+}
+
+.outfit-mini-select,
+.outfit-mini-select option {
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, sans-serif;
+}
+
+
+
+
+/* =========================
+   OUTFITS - NEW CLEAN MILKGLASS DESIGN
+========================= */
+
+.outfits-panel {
+  background: rgba(255, 255, 255, 0.82);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  height: calc(100vh - 110px);
+  overflow: hidden;
+  padding: 14px 18px 12px;
+  display: flex;
+  flex-direction: column;
+}
+
+.outfit-global-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+  margin: 12px 0 8px;
+}
+
+.outfit-top-filter {
+  padding: 10px 16px;
+  border-radius: 14px;
+  border: 1px solid rgba(0,0,0,0.10);
+  background: var(--gold-light);
+  color: #1a1a1a;
+  font-size: 0.95rem;
+  font-weight: 800;
+  cursor: pointer;
+  transition: transform 0.12s ease, filter 0.12s ease, background 0.12s ease;
+}
+
+.outfit-top-filter:hover {
+  transform: translateY(-1px);
+  filter: brightness(1.03);
+}
+
+.outfit-top-filter.active {
+  background: var(--gold-dark);
+  border-color: rgba(184, 153, 74, 1);
+  color: #111;
+}
+
+
+
+.outfit-section-block {
+  margin-top: 16px;
+  padding-top: 0;
+}
+.outfit-section-head {
+  margin: 0 24px 12px; /* links/rechts Einzug */
+}
+
+.outfit-section-label {
+  display: block;
+  font-size: 1.35rem;
+  font-weight: 900;
+  color: rgba(0,0,0,0.9);
+  margin-bottom: 6px;
+  letter-spacing: 0.3px;
+  padding-left: 2px;
+}
+
+.outfit-section-head::after {
+  content: "";
+  display: block;
+  height: 1px;
+  background: rgba(0,0,0,0.14);
+  margin-bottom: 6px;
+}
+
+.outfit-local-filters {
+  display: flex;
+  gap: 8px;
+  margin: 0 24px 6px;
+}
+
+.outfit-mini-select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+
+  width: 130px;
+  height: 36px;
+  padding: 0 36px 0 12px;
+
+  border-radius: 12px;
+  border: 1px solid rgba(0,0,0,0.08);
+
+  background-color: rgba(255,255,255,0.9);
+
+  /* 🔥 HIER IST DER PFEIL */
+  background-image: url("data:image/svg+xml;utf8,<svg fill='%23333333' height='20' viewBox='0 0 20 20' width='20' xmlns='http://www.w3.org/2000/svg'><path d='M5 7l5 5 5-5z'/></svg>");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  background-size: 16px;
+
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #2a2a2a;
+
+  cursor: pointer;
+}
+
+.outfit-rondell {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  min-height: 170px;
+  position: relative;
+}
+.empty-rondell {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 12px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: rgba(0,0,0,0.45);
+}
+.outfit-side-card,
+.outfit-center-card {
+  border-radius: 18px;
+  overflow: hidden;
+  background: rgba(255,255,255,0.96);
+  border: 1px solid rgba(0,0,0,0.08);
+  box-shadow: 0 8px 22px rgba(0,0,0,0.10);
+}
+
+.outfit-side-card {
+  width: 110px;
+  height: 170px;
+  opacity: 0.35;
+  filter: blur(1.2px);
+  transform: scale(0.9);
+  background: rgba(255,255,255,0.90);
+  border: 1px solid rgba(0,0,0,0.06);
+  box-shadow: 0 6px 14px rgba(0,0,0,0.05);
+  transition: transform 0.28s ease, opacity 0.28s ease, filter 0.28s ease;
+}
+
+
+.outfit-side-card img,
+.outfit-center-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+  display: block;
+  padding: 12px;
+}
+
+.outfit-center-card {
+  width: 175px;
+  height: 245px;
+  background: rgba(255,255,255,0.98);
+  border: 1px solid rgba(0,0,0,0.08);
+  box-shadow:
+    0 16px 36px rgba(0,0,0,0.16),
+    0 0 0 1px rgba(230, 211, 163, 0.22) inset,
+    0 0 16px rgba(230, 211, 163, 0.10);
+  transform: scale(1.04);
+  z-index: 2;
+  transition: transform 0.28s ease, box-shadow 0.28s ease;
+}
+
+.outfit-arrow {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 1px solid rgba(184, 153, 74, 0.28);
+  background: rgba(230, 211, 163, 0.28);
+  color: rgba(120, 95, 35, 0.82);
+  font-size: 11px;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 3px 8px rgba(184, 153, 74, 0.10);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  transition: all 0.15s ease;
+}
+
+.outfit-arrow:hover {
+  background: rgba(230, 211, 163, 0.42);
+  border-color: rgba(184, 153, 74, 0.40);
+  transform: scale(1.05);
+}
+
+.outfit-arrow.left {
+  margin-right: 8px; /* vorher negativ → jetzt Abstand */
+  z-index: 3;
+}
+
+.outfit-arrow.right {
+  margin-left: 8px;
+  z-index: 3;
+}
+
+
+.outfit-save-row {
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;   /* Abstand zum Schuh-Rondell */
+  margin-bottom: 40px; /* Abstand zum unteren Rand */
+}
+
+.outfit-save-btn {
+  padding: 12px 20px;
+  border-radius: 16px;
+  border: 1px solid rgba(0,0,0,0.10);
+  background: var(--gold-light);
+  color: #1a1a1a;
+  font-size: 1rem;
+  font-weight: 800;
+  cursor: pointer;
+  transition: transform 0.12s ease, filter 0.12s ease, background 0.12s ease;
+  box-shadow: 0 6px 14px rgba(0,0,0,0.06);
+}
+
+.outfit-save-btn:hover {
+  transform: translateY(-1px);
+  filter: brightness(1.03);
+}
+
+.outfit-save-btn:active {
+  background: var(--gold-dark);
+}
+
+.outfits-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 250px;
+  gap: 24px;
+  height: 100%;
+}
+
+.outfits-main {
+  min-width: 0;
+}
+
+.outfits-sidebar {
+  background: linear-gradient(
+    180deg,
+    #e6dcc3,
+    #d8c8a0
+  );
+  border-left: 1px solid rgba(0,0,0,0.10);
+  border-radius: 16px;
+  padding: 90px 14px 20px;
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+}
+.saved-outfits-title {
+  text-align: center;
+  font-size: 16px;
+  font-weight: 700;
+  margin-top: 0;
+  margin-bottom: 18px;
+  color: #2f2818;
+}
+
+.saved-outfits-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+  align-content: start;
+}
+
+.saved-outfit-card {
+  position: relative;
+  background: var(--gold-dark);
+  border-radius: 16px;
+  padding: 12px 10px 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-height: 220px;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+
+.saved-outfit-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 18px rgba(0,0,0,0.08);
+}
+
+.saved-outfit-images {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.saved-outfit-slot {
+  background: rgba(255,255,255,0.92);
+  border-radius: 12px;
+  height: 68px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.saved-outfit-img {
+  max-width: 82%;
+  max-height: 82%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  display: block;
+}
+
+
+
+.saved-outfit-footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 8px;
+}
+
+.saved-outfit-index {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: rgba(0,0,0,0.55);
+}
+
+.saved-outfit-number {
+  text-align: center;
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: #2f2a1f;
+  margin-top: 2px;
+}
+
+.delete-outfit-btn {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 24px;
+  height: 24px;
+  border: none;
+  background: rgba(255,255,255,0.72);
+  border-radius: 8px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.15s ease, background 0.15s ease, box-shadow 0.15s ease;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.06);
+}
+
+.delete-saved-outfit-btn {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 24px;
+  height: 24px;
+  border: none;
+  background: rgba(255,255,255,0.9);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 3;
+}
+
+.delete-outfit-btn:hover {
+  transform: scale(1.06);
+  background: rgba(255,255,255,0.95);
+}
+
+.trash-icon {
+  position: relative;
+  width: 10px;
+  height: 10px;
+  border: 1.6px solid rgba(0,0,0,0.55);
+  border-top: none;
+  border-radius: 0 0 2px 2px;
+  display: block;
+}
+
+.trash-icon::before {
+  content: "";
+  position: absolute;
+  top: -4px;
+  left: -2px;
+  width: 14px;
+  height: 2px;
+  background: rgba(0,0,0,0.55);
+  border-radius: 2px;
+}
+
+.trash-icon::after {
+  content: "";
+  position: absolute;
+  top: -6px;
+  left: 2px;
+  width: 6px;
+  height: 2px;
+  background: rgba(0,0,0,0.55);
+  border-radius: 2px;
+}
+
+.occasion-checkboxes {
+  display: grid;
+  grid-template-columns: repeat(2, max-content);
+  gap: 12px;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.occasion-option {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center;
+  gap: 8px;
+
+  padding: 10px 14px;
+  background: rgba(255, 255, 255, 0.72);
+  border-radius: 12px;
+  cursor: pointer;
+
+  white-space: nowrap;
+  min-width: 160px;
+}
+
+.occasion-option input[type="checkbox"] {
+  margin: 0;
+  flex: 0 0 auto;
+  width: 14px;
+  height: 14px;
+  cursor: pointer;
+}
+
+.occasion-option span {
+  display: inline-block;
+  line-height: 1.2;
+  font-size: 14px;
+  font-weight: 600;
+  color: #333;
+}
+
+.occasion-option:hover {
+  background: rgba(255,255,255,0.82);
+}
+
+
+.add-modal-title {
+  text-align: center;
+  margin-bottom: 20px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+.add-modal-actions {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 25px;
+}
+
+.btn-primary {
+  background: var(--gold-dark);
+  color: white;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.btn-secondary {
+  background: rgba(0,0,0,0.08);
+  color: #333;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .closet-title {
+    font-size: 2rem;
+    text-align: center;
+  }
+
+  .closet-topbar {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    align-items: center;
+  }
+
+  .add-btn {
+    width: auto;
+    min-width: 160px;
+  }
+
+  .item-row,
+  .item-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+  }
+
+  .item-card {
+    max-width: none;
+  }
+}
+
+@media (max-width: 980px) {
+  .outfits-layout {
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+  }
+
+  .outfits-sidebar {
+    width: 100%;
+    max-width: none;
+  }
+
+  .saved-outfits-list {
+    max-height: 420px;
+    overflow-y: auto;
+  }
+}
+.outfit-center-card {
+  width: 180px;
+  height: 260px;
+}
+
+.outfit-side-card {
+  width: 82px;
+  height: 145px;
+}
+
+@media (max-width: 768px) {
+  .outfit-center-card {
+    width: 145px;
+    height: 215px;
+  }
+
+  .outfit-side-card {
+    width: 62px;
+    height: 110px;
+  }
+
+  .outfit-arrow {
+    width: 34px;
+    height: 34px;
+  }
+}
+
+.outfit-local-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+}
+
+@media (max-width: 768px) {
+  .outfit-local-filters {
+    justify-content: flex-start;
+  }
+
+  .outfit-mini-select {
+    min-width: 140px;
+  }
+}
+
+.modal-card {
+  width: min(520px, calc(100vw - 28px));
+  max-height: min(90vh, 760px);
+  overflow-y: auto;
+  box-sizing: border-box;
+}
+
+
+@media (max-width: 768px) {
+  .modal-card {
+    width: calc(100vw - 20px);
+    padding: 20px 16px;
+    border-radius: 22px;
+  }
+
+  .add-modal-title {
+    font-size: 1.9rem;
+  }
+
+  .add-modal-actions {
+    flex-wrap: wrap;
+  }
+
+  .btn-primary,
+  .btn-secondary {
+    min-width: 130px;
+  }
+}
+
+@media (max-width: 768px) {
+  .saved-outfits-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+  }
+
+  .saved-outfit-card {
+    min-height: 180px;
+    padding: 10px 8px;
+  }
+
+  .saved-outfit-slot {
+    height: 56px;
+  }
+}
