@@ -1085,20 +1085,17 @@ nav#sideMenu li.home-item:hover svg {
   /* ===== CLOSET GRID ===== */
 .item-row,
 .item-grid {
-  display: grid;
-  grid-auto-flow: column;
-  grid-auto-columns: 28vw;
+  display: flex;
   gap: 10px;
-
   overflow-x: auto;
   overflow-y: hidden;
-
-  padding: 0 10px 6px; 
-  
+  padding: 0 10px 6px;
   scroll-snap-type: x proximity;
   -webkit-overflow-scrolling: touch;
+  align-items: stretch;
 }
 .item-card {
+  flex: 0 0 28vw;
   width: 28vw;
   min-width: 28vw;
   max-width: 28vw;
@@ -1109,6 +1106,12 @@ nav#sideMenu li.home-item:hover svg {
   overflow: hidden;
   scroll-snap-align: start;
 }
+.item-row::after,
+.item-grid::after {
+  content: "";
+  flex: 0 0 2px;
+}
+
 .item-card img {
   width: 100%;
   height: 104px;
