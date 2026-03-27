@@ -1086,13 +1086,32 @@ nav#sideMenu li.home-item:hover svg {
 .item-row,
 .item-grid {
   display: flex;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-items: stretch;
   gap: 10px;
+
   overflow-x: auto;
   overflow-y: hidden;
+
   padding: 0 10px 6px;
   scroll-snap-type: x proximity;
   -webkit-overflow-scrolling: touch;
-  align-items: stretch;
+}
+
+.item-row .item-card,
+.item-grid .item-card {
+  flex: 0 0 28vw;
+  width: 28vw;
+  min-width: 28vw;
+  max-width: 28vw;
+  margin: 0 !important;
+}
+
+.item-row > *,
+.item-grid > * {
+  margin-left: 0 !important;
+  margin-right: 0 !important;
 }
 .item-card {
   flex: 0 0 28vw;
