@@ -1086,42 +1086,71 @@ nav#sideMenu li.home-item:hover svg {
 .item-row,
 .item-grid {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-auto-flow: column;
+  grid-auto-columns: 42vw;
   gap: 10px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding-bottom: 6px;
+  scroll-snap-type: x proximity;
+  -webkit-overflow-scrolling: touch;
 }
 .item-card {
-  width: 100%;
-  min-width: 0;
-  max-width: none;
-  min-height: 170px;
+  width: 42vw;
+  min-width: 42vw;
+  max-width: 42vw;
+  min-height: 190px;
   padding: 8px 8px 10px;
   border-radius: 16px;
   box-sizing: border-box;
   overflow: hidden;
+  scroll-snap-align: start;
 }
 .item-card img {
   width: 100%;
-  height: 96px;
-  max-height: 96px;
+  height: 112px;
+  max-height: 112px;
   object-fit: contain;
   display: block;
   margin: 0 auto 8px;
   background: rgba(255,255,255,0.55);
-  border-radius: 12px;
-  padding: 6px;
+  border-radius: 14px;
+  padding: 8px;
   box-sizing: border-box;
 }
 
 .item-name {
-  font-size: 0.76rem;
-  margin-top: 2px;
+  font-size: 0.74rem;
+  margin-top: 4px;
   line-height: 1.05;
   font-weight: 700;
 }
 
 .item-meta {
-  font-size: 0.58rem;
-  line-height: 1.12;
+  font-size: 0.56rem;
+  line-height: 1.1;
+}
+
+.item-name {
+  font-size: 0.74rem;
+  margin-top: 4px;
+  line-height: 1.05;
+  font-weight: 700;
+}
+
+.item-meta {
+  font-size: 0.56rem;
+  line-height: 1.1;
+}
+.item-row::-webkit-scrollbar,
+.item-grid::-webkit-scrollbar {
+  height: 6px;
+}
+
+.item-row::-webkit-scrollbar-thumb,
+.item-grid::-webkit-scrollbar-thumb {
+  background: rgba(0,0,0,0.15);
+  border-radius: 999px;
 }
   /* ===== OUTFITS HEADER ===== */
   .outfits-panel .closet-title,
