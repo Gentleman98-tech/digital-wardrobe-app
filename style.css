@@ -1083,38 +1083,45 @@ nav#sideMenu li.home-item:hover svg {
   }
 
   /* ===== CLOSET GRID ===== */
-  .item-row,
-  .item-grid {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 10px;
-  }
+.item-row,
+.item-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+}
+ .item-card {
+  max-width: none;
+  min-height: 182px;
+  padding: 6px 6px 8px;
+  border-radius: 16px;
+  box-sizing: border-box;
+}
+.item-card img {
+  width: 100%;
+  max-height: 108px;
+  object-fit: contain;
+  display: block;
+  margin: 0 auto;
+}
 
-  .item-card {
-    max-width: none;
-    min-height: 146px;
-    padding: 7px 7px 8px;
-    border-radius: 14px;
-  }
+.item-card img {
+  background: rgba(255,255,255,0.55);
+  border-radius: 12px;
+  padding: 6px;
+  box-sizing: border-box;
+}
 
-  .item-card img {
-    max-height: 72px;
-    object-fit: contain;
-    display: block;
-    margin: 0 auto;
-  }
+.item-name {
+  font-size: 0.68rem;
+  margin-top: 6px;
+  line-height: 1.05;
+  font-weight: 700;
+}
 
-  .item-name {
-    font-size: 0.74rem;
-    margin-top: 5px;
-    line-height: 1.05;
-  }
-
-  .item-meta {
-    font-size: 0.54rem;
-    line-height: 1.12;
-  }
-
+.item-meta {
+  font-size: 0.5rem;
+  line-height: 1.08;
+}
   /* ===== OUTFITS HEADER ===== */
   .outfits-panel .closet-title,
   .outfits-panel h1 {
