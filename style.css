@@ -972,123 +972,173 @@ nav#sideMenu li.home-item:hover svg {
 
 }
 
-  /* ===== MOBILE (iPhone) ===== */
-
-.section-title{font-size: 0.9rem;
-  margin: 8px 0 8px;}
-
-  @media (max-width: 767px) {
-.closet-topbar {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  gap: 8px;
-  margin-bottom: 10px;
-}
-
-.closet-title {
-  font-size: 0.85rem;
-  line-height: 1.1;
-  margin: 0;
-  white-space: nowrap;
-  flex: 1 1 auto;
-  min-width: 0;
-}
-.closet-panel,
-.outfits-panel {
-  width: calc(100vw - 8px);
-  margin: 6px auto 10px;
-  border-radius: 18px;
-  padding: 12px 8px 14px;
-  box-sizing: border-box;
-}
-.add-btn {
-  flex: 0 0 auto;
-  min-width: 92px;
-  height: 38px;
-  padding: 0 12px;
-  font-size: 0.8rem;
-  border-radius: 12px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.menu-btn,#menubtn,
-.burger-btn{
-top: 14px;
-left: 14px;
-width: 34px;
-height: 34px;
-}
-.outfit-global-filters {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 6px;
-  margin-top: 6px;
-  margin-bottom: 8px;
-}
-
-.outfit-top-filter {
-  padding: 6px 10px;
-  font-size: 0.76rem;
-  border-radius: 10px;
-  min-height: 30px;
-}
-
-.outfits-panel .closet-title,
-.outfits-panel h1 {
-  font-size: 1.55rem;
-  margin-bottom: 8px;
-  text-align: center;
-}
+  /* =========================================================
+   iPHONE
+   ========================================================= */
 @media (max-width: 767px) {
-.filter-bar,
-.subfilter-bar {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 6px;
-}
 
-.filter-btn,
-.subfilter-btn {
-  padding: 6px 9px;
-  font-size: 0.72rem;
-  line-height: 1;
-  min-height: 28px;
-  border-radius: 10px;
-}}
+  /* ===== GLOBAL ===== */
+  html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    overflow-x: hidden;
+  }
 
-@media (max-width: 767px) {
+  body {
+    background: #f5f1e8;
+  }
+
+  .closet-panel,
+  .outfits-panel {
+    width: calc(100vw - 8px);
+    margin: 6px auto 10px;
+    padding: 12px 8px 14px;
+    border-radius: 18px;
+    box-sizing: border-box;
+  }
+
+  /* ===== MENU ===== */
+  .side-menu,
+  .menu-panel,
+  .burger-menu-panel,
+  .nav-panel {
+    width: 190px;
+    padding: 12px 10px;
+    box-sizing: border-box;
+  }
+
+  .side-menu a,
+  .menu-panel a,
+  .burger-menu-panel a,
+  .nav-panel a {
+    font-size: 0.88rem;
+    padding: 8px 6px;
+  }
+
+  .menu-btn,
+  #menuBtn,
+  .burger-btn {
+    top: 14px;
+    left: 14px;
+    width: 34px;
+    height: 34px;
+  }
+
+  /* ===== HEADER ===== */
+  .closet-topbar {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 10px;
+  }
+
+  .closet-title {
+    font-size: 0.85rem;
+    line-height: 1.1;
+    margin: 0;
+    white-space: nowrap;
+    text-align: left;
+    flex: 1 1 auto;
+    min-width: 0;
+  }
+
+  .add-btn {
+    flex: 0 0 auto;
+    min-width: 92px;
+    height: 38px;
+    padding: 0 12px;
+    font-size: 0.8rem;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* ===== SECTION TITLES ===== */
+  .section-title {
+    font-size: 0.9rem;
+    margin: 8px 0;
+  }
+
+  /* ===== FILTERS ===== */
+  .filter-bar,
+  .subfilter-bar {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 6px;
+  }
+
+  .filter-btn,
+  .subfilter-btn {
+    padding: 6px 9px;
+    font-size: 0.72rem;
+    line-height: 1;
+    min-height: 28px;
+    border-radius: 10px;
+  }
+
+  /* ===== CLOSET GRID ===== */
+  .item-row,
+  .item-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
+
   .item-card {
-  min-height: 146px;
-  padding: 7px 7px 8px;
-  border-radius: 14px;
-}
+    max-width: none;
+    min-height: 146px;
+    padding: 7px 7px 8px;
+    border-radius: 14px;
+  }
 
-.item-card img {
-  max-height: 72px;
-  object-fit: contain;
-  display: block;
-  margin: 0 auto;
-}
+  .item-card img {
+    max-height: 72px;
+    object-fit: contain;
+    display: block;
+    margin: 0 auto;
+  }
 
-.item-name {
-  font-size: 0.74rem;
-  margin-top: 5px;
-  line-height: 1.05;
-}
+  .item-name {
+    font-size: 0.74rem;
+    margin-top: 5px;
+    line-height: 1.05;
+  }
 
-.item-meta {
-  font-size: 0.54rem;
-  line-height: 1.12;
-}
-}
+  .item-meta {
+    font-size: 0.54rem;
+    line-height: 1.12;
+  }
 
-@media (max-width: 767px) {
+  /* ===== OUTFITS HEADER ===== */
+  .outfits-panel .closet-title,
+  .outfits-panel h1 {
+    font-size: 1.55rem;
+    text-align: center;
+    margin-bottom: 8px;
+  }
+
+  .outfit-global-filters {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 6px;
+    margin-top: 6px;
+    margin-bottom: 8px;
+  }
+
+  .outfit-top-filter {
+    padding: 6px 10px;
+    font-size: 0.76rem;
+    border-radius: 10px;
+    min-height: 30px;
+  }
+
+  /* ===== OUTFIT SECTIONS ===== */
   .outfits-main {
     padding-bottom: 14px;
   }
@@ -1104,49 +1154,44 @@ height: 34px;
   .outfit-section-label {
     font-size: 0.92rem;
   }
-}
 
-@media (max-width: 767px) {
   .outfit-local-filters {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-  margin-bottom: 6px;
-}
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 6px;
+    justify-content: flex-start;
+  }
 
-.outfit-mini-select {
-  min-width: 108px;
-  height: 30px;
-  font-size: 0.74rem;
-  padding: 0 26px 0 8px;
-  border-radius: 10px;
-}
+  .outfit-mini-select {
+    min-width: 108px;
+    height: 30px;
+    font-size: 0.74rem;
+    padding: 0 26px 0 8px;
+    border-radius: 10px;
+  }
 
-.outfit-rondell {
-  min-height: 120px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 4px;
-}
+  /* ===== RONDELL ===== */
+  .outfit-rondell {
+    min-height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+  }
 
-.outfit-center-card {
-  width: 96px;
-  height: 130px;
-  border-radius: 14px;
-}
+  .outfit-center-card {
+    width: 96px;
+    height: 130px;
+    border-radius: 14px;
+  }
 
-.outfit-side-card {
-  width: 34px;
-  height: 62px;
-  border-radius: 10px;
-}
+  .outfit-side-card {
+    width: 34px;
+    height: 62px;
+    border-radius: 10px;
+  }
 
-.outfit-arrow {
-  width: 26px;
-  height: 26px;
-  font-size: 0.78rem;
-}
   .outfit-center-card img,
   .outfit-side-card img {
     width: 100%;
@@ -1154,18 +1199,12 @@ height: 34px;
     object-fit: contain;
   }
 
-}
-.outfit-save-row {
-  margin: 8px 0 12px;
-}
+  .outfit-arrow {
+    width: 26px;
+    height: 26px;
+    font-size: 0.78rem;
+  }
 
-.outfit-save-btn {
-  padding: 8px 11px;
-  font-size: 0.76rem;
-  border-radius: 12px;
-}
-
-@media (max-width: 767px) {
   .outfit-save-row {
     margin: 10px 0 14px;
   }
@@ -1175,34 +1214,34 @@ height: 34px;
     font-size: 0.8rem;
     border-radius: 12px;
   }
-}
-@media (max-width: 767px) {
+
+  /* ===== SAVED OUTFITS ===== */
   .saved-outfits-title {
-  font-size: 0.88rem;
-  margin-bottom: 8px;
-}
+    font-size: 0.88rem;
+    margin-bottom: 8px;
+  }
 
-.saved-outfits-list {
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 8px;
-  max-height: 250px;
-  overflow-y: auto;
-}
+  .saved-outfits-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+    max-height: 250px;
+    overflow-y: auto;
+  }
 
-.saved-outfit-card {
-  min-height: 132px;
-  padding: 8px 6px 6px;
-  border-radius: 12px;
-}
+  .saved-outfit-card {
+    min-height: 132px;
+    padding: 8px 6px 6px;
+    border-radius: 12px;
+  }
 
-.saved-outfit-slot {
-  height: 36px;
-  border-radius: 8px;
-}
+  .saved-outfit-slot {
+    height: 36px;
+    border-radius: 8px;
+  }
 
-.saved-outfit-number {
-  font-size: 0.7rem;
-}
+  .saved-outfit-number {
+    font-size: 0.7rem;
+  }
 
   .delete-saved-outfit-btn {
     width: 20px;
@@ -1210,8 +1249,8 @@ height: 34px;
     top: 5px;
     right: 5px;
   }
-}
-@media (max-width: 767px) {
+
+  /* ===== MODAL ===== */
   .modal-card {
     width: calc(100vw - 14px);
     max-height: 88vh;
@@ -1258,157 +1297,5 @@ height: 34px;
     min-width: 112px;
     font-size: 0.8rem;
     padding: 9px 10px;
-  }
-}
-@media (max-width: 767px) {
-  .side-menu,
-  .menu-panel,
-  .burger-menu-panel,
-  .nav-panel {
-    width: 190px;
-    padding: 12px 10px;
-  }
-
-  .side-menu a,
-  .menu-panel a,
-  .burger-menu-panel a,
-  .nav-panel a {
-    font-size: 0.88rem;
-    padding: 8px 6px;
-  }
-}
-  /* ===== GLOBAL ===== */
-  html, body {
-    margin: 0;
-    padding: 0;
-    width: 100%;
-    overflow-x: hidden;
-  }
-
-  body {
-    background: #f5f1e8;
-  }
-
-  .closet-panel,
-  .outfits-panel {
-    width: calc(100vw - 10px);
-    margin: 8px auto 12px;
-    border-radius: 18px;
-    padding: 14px 10px 16px;
-    box-sizing: border-box;
-  }
-
-  /* ===== HEADER ===== */
-  .closet-title {
-    font-size: 1.5rem;
-    text-align: left;
-  }
-
-  .closet-topbar {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    gap: 10px;
-  }
-
-  .add-btn {
-    width: 42px;
-    height: 42px;
-    min-width: unset;
-    padding: 0;
-    font-size: 1.3rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  /* ===== GRID ===== */
-  .item-row,
-  .item-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 10px;
-  }
-
-  .item-card {
-    max-width: none;
-  }
-
-  /* ===== RONDELL ===== */
-  .outfit-center-card {
-    width: 145px;
-    height: 215px;
-  }
-
-  .outfit-side-card {
-    width: 62px;
-    height: 110px;
-  }
-
-  .outfit-arrow {
-    width: 34px;
-    height: 34px;
-  }
-
-  /* ===== FILTER ===== */
-  .outfit-local-filters {
-    justify-content: flex-start;
-  }
-
-  .outfit-mini-select {
-    min-width: 120px;
-  }
-
-  /* ===== MODAL ===== */
-  .modal-card {
-    width: calc(100vw - 20px);
-    padding: 20px 16px;
-    border-radius: 22px;
-  }
-
-  .add-modal-title {
-    font-size: 1.6rem;
-  }
-
-  .add-modal-actions {
-    flex-wrap: wrap;
-  }
-
-  .btn-primary,
-  .btn-secondary {
-    min-width: 120px;
-  }
-
-  /* ===== SAVED OUTFITS ===== */
-  .saved-outfits-list {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 12px;
-  }
-
-  .saved-outfit-card {
-    min-height: 160px;
-    padding: 10px 8px;
-  }
-
-  .saved-outfit-slot {
-    height: 56px;
-  }
-
-  /* ===== MENU ===== */
-  .side-menu,
-  .menu-panel,
-  .burger-menu-panel,
-  .nav-panel {
-    width: 210px;
-    padding: 14px 12px;
-    box-sizing: border-box;
-  }
-
-  .side-menu a,
-  .menu-panel a,
-  .burger-menu-panel a,
-  .nav-panel a {
-    font-size: 0.95rem;
-    padding: 10px 8px;
   }
 }
