@@ -181,34 +181,40 @@ nav#sideMenu li.home-item:hover svg {
 }
 
 /* Topbar: Titel + Add Button */
-.closet-topbar{
+.closet-topbar {
   position: relative;
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
+  min-height: 56px;
+  margin-bottom: 14px;
 }
 
 .closet-title {
-  position: relative;
-  margin: 0 auto 14px;
+  width: 100%;
+  margin: 0;
   text-align: center;
+  color: #111;
+  font-size: 2.6rem;
+  line-height: 1.1;
 }
 
 /* Add Button */
-.add-btn{
+.add-btn {
   position: absolute;
+  top: 50%;
   right: 12px;
-  top: -4px;
+  transform: translateY(-50%);
 
-  padding: 8px 12px;
-  font-size: 0.85rem;
+  height: 40px;
+  padding: 0 14px;
 
-  border-radius: 10px;
+  border-radius: 12px;
   border: 1px solid rgba(0,0,0,0.10);
   background: var(--gold-dark);
   color: #111;
   font-weight: 800;
-
+  font-size: 0.9rem;
   cursor: pointer;
 }
 .add-btn:hover {
@@ -1097,29 +1103,34 @@ nav#sideMenu li.home-item:hover svg {
   }
 .closet-topbar {
   position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  min-height: 56px;
+  margin-bottom: 14px;
 }
 
-  .closet-title {
-    font-size: 0.85rem;
-    line-height: 1.1;
-    margin: 0;
-    white-space: nowrap;
-    text-align: left;
-    flex: 1 1 auto;
-    min-width: 0;
-  }
+.closet-title {
+  width: 100%;
+  margin: 0;
+  font-size: 0.82rem;
+  line-height: 1.1;
+  text-align: center;
+  white-space: nowrap;
+
+  /* Platz links fürs Burger-Menü und rechts für den Button */
+  padding: 0 120px 0 44px;
+}
 
 .add-btn {
   position: absolute;
-  top: -2px;
-  right: 8px;
+  top: 0;
+  right: 6px;
+  transform: none;
 
-  height: 32px;
+  height: 28px;
+  min-width: auto;
   padding: 0 10px;
-  font-size: 0.75rem;
+
+  font-size: 0.72rem;
+  border-radius: 10px;
 
   display: flex;
   align-items: center;
