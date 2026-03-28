@@ -377,6 +377,7 @@ nav#sideMenu li.home-item:hover svg {
   box-shadow: 0 10px 24px rgba(0,0,0,0.12);
   z-index: 1;
 }
+
 .item-card-image-wrap {
   width: 100%;
   border-radius: 14px;
@@ -416,6 +417,7 @@ nav#sideMenu li.home-item:hover svg {
   height: 100%;
   gap: 6px;
   text-align: center;
+  color: #111;
 }
 
 .item-back-title {
@@ -424,6 +426,7 @@ nav#sideMenu li.home-item:hover svg {
   line-height: 1.1;
   text-align: center;
   margin: 0;
+  color: #111;
 }
 
 .item-back-meta {
@@ -432,7 +435,9 @@ nav#sideMenu li.home-item:hover svg {
   text-align: center;
   width: 100%;
   margin: 0;
+  color: rgba(0,0,0,0.82);
 }
+
 /* Delete Button */
 .delete-item-btn {
   width: 34px;
@@ -1196,10 +1201,6 @@ nav#sideMenu li.home-item:hover svg {
   }
 .item-card-back {
   padding: 10px 8px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
 }
 
 .item-back-content {
@@ -1209,17 +1210,11 @@ nav#sideMenu li.home-item:hover svg {
 .item-back-title {
   font-size: 0.74rem;
   line-height: 1.05;
-  font-weight: 700;
-  text-align: center;
-  margin: 0;
 }
 
 .item-back-meta {
   font-size: 0.54rem;
   line-height: 1.15;
-  text-align: center;
-  width: 100%;
-  margin: 0;
 }
 
   .item-card-image-wrap {
