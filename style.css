@@ -1086,17 +1086,15 @@ nav#sideMenu li.home-item:hover svg {
   /* ===== CLOSET GRID ===== */
 .item-row,
 .item-grid {
-  display: flex;
-  flex-wrap: nowrap;
-  justify-content: flex-start;
-  align-items: stretch;
+  display: grid;
+  grid-template-columns: repeat(5, 28vw);
+  grid-auto-flow: row;
   gap: 10px;
-
+  padding: 0 10px 6px;
   overflow-x: auto;
   overflow-y: hidden;
-
-  padding: 0 10px 6px;
-  scroll-snap-type: x proximity;
+  align-items: start;
+  justify-content: start;
   -webkit-overflow-scrolling: touch;
 }
 
@@ -1115,7 +1113,6 @@ nav#sideMenu li.home-item:hover svg {
   margin-right: 0 !important;
 }
 .item-card {
-  flex: 0 0 28vw;
   width: 28vw;
   min-width: 28vw;
   max-width: 28vw;
@@ -1124,7 +1121,6 @@ nav#sideMenu li.home-item:hover svg {
   border-radius: 16px;
   box-sizing: border-box;
   overflow: hidden;
-  scroll-snap-align: start;
 }
 .item-row::after,
 .item-grid::after {
