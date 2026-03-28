@@ -414,6 +414,7 @@ nav#sideMenu li.home-item:hover svg {
   justify-content: center;
   gap: 6px;
   width: 100%;
+  max-width: 100%;
   text-align: center;
   color: #111;
 }
@@ -1208,17 +1209,11 @@ nav#sideMenu li.home-item:hover svg {
 .item-back-title {
   font-size: 0.74rem;
   line-height: 1.05;
-  font-weight: 700;
-  text-align: center;
-  margin: 0;
 }
 
 .item-back-meta {
   font-size: 0.54rem;
   line-height: 1.15;
-  text-align: center;
-  width: 100%;
-  margin: 0;
 }
   .item-card-image-wrap {
     width: 100%;
