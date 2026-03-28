@@ -182,34 +182,35 @@ nav#sideMenu li.home-item:hover svg {
 
 /* Topbar: Titel + Add Button */
 .closet-topbar{
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  position:relative;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .closet-title {
-  margin: 0 0 14px;
+  position: relative;
+  margin: 0 auto 14px;
   text-align: center;
-  color: #111;
-  font-size: 2.6rem;
 }
 
 /* Add Button */
 .add-btn{
-  position:absolute;
-  right: 14px;
-  top: 2px;
-  padding: 12px 16px;
-  border-radius: 14px;
+  position: absolute;
+  right: 12px;
+  top: -4px;
+
+  padding: 8px 12px;
+  font-size: 0.85rem;
+
+  border-radius: 10px;
   border: 1px solid rgba(0,0,0,0.10);
   background: var(--gold-dark);
   color: #111;
-  font-weight: 900;
-  font-size: 1rem;
-  cursor:pointer;
-}
+  font-weight: 800;
 
+  cursor: pointer;
+}
 .add-btn:hover {
   filter: brightness(1.05);
 }
@@ -1095,14 +1096,12 @@ nav#sideMenu li.home-item:hover svg {
     height: 34px;
   }
 
-  .closet-topbar {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    gap: 8px;
-    margin-bottom: 10px;
-  }
+.closet-topbar {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
   .closet-title {
     font-size: 0.85rem;
@@ -1114,17 +1113,19 @@ nav#sideMenu li.home-item:hover svg {
     min-width: 0;
   }
 
-  .add-btn {
-    flex: 0 0 auto;
-    min-width: 92px;
-    height: 38px;
-    padding: 0 12px;
-    font-size: 0.8rem;
-    border-radius: 12px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
+.add-btn {
+  position: absolute;
+  top: -2px;
+  right: 8px;
+
+  height: 32px;
+  padding: 0 10px;
+  font-size: 0.75rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
   .section-title {
     font-size: 0.9rem;
