@@ -979,12 +979,13 @@ nav#sideMenu li.home-item:hover svg {
 
   /* ===== GLOBAL ===== */
   html, body {
+    touch-action: manipulation;
     margin: 0;
     padding: 0;
     width: 100%;
     overflow-x: hidden;
   }
-
+  
   body {
     background: #f5f1e8;
   }
