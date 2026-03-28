@@ -1215,14 +1215,14 @@ function renderCard(i) {
 
     <!-- BACK -->
     <div class="item-card-back">
-      <div class="item-back-content">
-        <div class="item-back-title">${i.type}</div>
-        <div class="item-back-meta"><strong>Kategorie:</strong> ${i.mainCategory || "-"}</div>
-        <div class="item-back-meta"><strong>Farbe:</strong> ${i.color || "-"}</div>
-        <div class="item-back-meta"><strong>Anlass:</strong> ${(i.occasions || []).join(", ") || "-"}</div>
-      </div>
-    </div>
-
+      <div class="item-card-back">
+  <div class="item-back-content">
+    <div class="item-back-title">${i.type}</div>
+    <div class="item-back-meta"><strong>Kategorie:</strong> ${i.mainCategory || "-"}</div>
+    <div class="item-back-meta"><strong>Farbe:</strong> ${i.color || "-"}</div>
+    <div class="item-back-meta"><strong>Anlass:</strong> ${(i.occasions || []).join(", ") || "-"}</div>
+  </div>
+</div>
   </div>
 `;
 

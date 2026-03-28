@@ -362,6 +362,7 @@ nav#sideMenu li.home-item:hover svg {
   background: rgba(255,255,255,0.72);
   border: 1px solid rgba(0,0,0,0.08);
   box-shadow: 0 10px 24px rgba(0,0,0,0.12);
+  z-index: 2;
 }
 
 .item-card-back {
@@ -374,8 +375,8 @@ nav#sideMenu li.home-item:hover svg {
   background: rgba(255,255,255,0.72);
   border: 1px solid rgba(0,0,0,0.08);
   box-shadow: 0 10px 24px rgba(0,0,0,0.12);
+  z-index: 1;
 }
-
 .item-card-image-wrap {
   width: 100%;
   border-radius: 14px;
@@ -406,12 +407,32 @@ nav#sideMenu li.home-item:hover svg {
   line-height: 1.1;
 }
 
-.item-meta {
-  margin: 0 4px 6px;
-  color: rgba(0,0,0,0.62);
-  font-size: 0.9rem;
+.item-back-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  gap: 6px;
+  text-align: center;
 }
 
+.item-back-title {
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1.1;
+  text-align: center;
+  margin: 0;
+}
+
+.item-back-meta {
+  font-size: 0.82rem;
+  line-height: 1.3;
+  text-align: center;
+  width: 100%;
+  margin: 0;
+}
 /* Delete Button */
 .delete-item-btn {
   width: 34px;
@@ -433,6 +454,11 @@ nav#sideMenu li.home-item:hover svg {
   z-index: 5;
 }
 
+.item-card-back .delete-item-btn {
+  display: none !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
 .trash-icon {
   position: relative;
   width: 10px;
@@ -540,16 +566,7 @@ nav#sideMenu li.home-item:hover svg {
   background: var(--gold-dark);
 }
 
-.item-back-content {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  height: 100%;
-  gap: 6px;
-  text-align: center;
-}
+
 /* Dropdown Kategorien – Obergruppen */
 .outfit-mini-select optgroup {
   font-weight: 700;
