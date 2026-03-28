@@ -183,39 +183,14 @@ nav#sideMenu li.home-item:hover svg {
 /* Topbar: Titel + Add Button */
 .closet-topbar {
   position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 56px;
-  margin-bottom: 14px;
 }
 
 .closet-title {
-  width: 100%;
-  margin: 0;
   text-align: center;
-  color: #111;
-  font-size: 2.6rem;
-  line-height: 1.1;
 }
 
-/* Add Button */
 .add-btn {
   position: absolute;
-  top: 50%;
-  right: 12px;
-  transform: translateY(-50%);
-
-  height: 40px;
-  padding: 0 14px;
-
-  border-radius: 12px;
-  border: 1px solid rgba(0,0,0,0.10);
-  background: var(--gold-dark);
-  color: #111;
-  font-weight: 800;
-  font-size: 0.9rem;
-  cursor: pointer;
 }
 .add-btn:hover {
   filter: brightness(1.05);
@@ -1102,39 +1077,39 @@ nav#sideMenu li.home-item:hover svg {
     height: 34px;
   }
 .closet-topbar {
-  position: relative;
-  min-height: 56px;
-  margin-bottom: 14px;
+  position: relative !important;
+  display: block !important;
+  min-height: 58px !important;
+  margin-bottom: 14px !important;
 }
 
 .closet-title {
-  width: 100%;
-  margin: 0;
-  font-size: 0.82rem;
-  line-height: 1.1;
-  text-align: center;
-  white-space: nowrap;
-
-  /* Platz links fürs Burger-Menü und rechts für den Button */
-  padding: 0 120px 0 44px;
+  display: block !important;
+  width: 100% !important;
+  margin: 0 !important;
+  padding: 0 118px 0 44px !important;
+  font-size: 0.82rem !important;
+  line-height: 1.1 !important;
+  text-align: center !important;
+  white-space: nowrap !important;
 }
 
 .add-btn {
-  position: absolute;
-  top: 0;
-  right: 6px;
-  transform: none;
+  position: absolute !important;
+  top: 0 !important;
+  right: 6px !important;
+  transform: none !important;
 
-  height: 28px;
-  min-width: auto;
-  padding: 0 10px;
+  height: 28px !important;
+  min-width: auto !important;
+  padding: 0 10px !important;
 
-  font-size: 0.72rem;
-  border-radius: 10px;
+  font-size: 0.72rem !important;
+  border-radius: 10px !important;
 
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
 }
 
   .section-title {
