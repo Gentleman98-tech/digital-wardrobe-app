@@ -368,9 +368,11 @@ nav#sideMenu li.home-item:hover svg {
   transform: rotateY(180deg);
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
-  gap: 10px;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
   padding: 14px 12px;
+  text-align: center;
   background: rgba(255,255,255,0.72);
   border: 1px solid rgba(0,0,0,0.08);
   box-shadow: 0 10px 24px rgba(0,0,0,0.12);
@@ -416,11 +418,15 @@ nav#sideMenu li.home-item:hover svg {
   font-size: 1rem;
   font-weight: 700;
   line-height: 1.1;
+  text-align: center;
+  margin-bottom: 4px;
 }
 
 .item-back-meta {
   font-size: 0.82rem;
   line-height: 1.3;
+  text-align: center;
+  width: 100%;
 }
 
 /* Delete Button */
@@ -1175,22 +1181,27 @@ nav#sideMenu li.home-item:hover svg {
   .item-card-back {
     border-radius: 16px;
   }
+.item-card-back {
+  padding: 10px 8px;
+  gap: 6px;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
 
-  .item-card-back {
-    padding: 10px 8px;
-    gap: 6px;
-  }
+.item-back-title {
+  font-size: 0.74rem;
+  line-height: 1.05;
+  font-weight: 700;
+  text-align: center;
+}
 
-  .item-back-title {
-    font-size: 0.74rem;
-    line-height: 1.05;
-    font-weight: 700;
-  }
-
-  .item-back-meta {
-    font-size: 0.54rem;
-    line-height: 1.15;
-  }
+.item-back-meta {
+  font-size: 0.54rem;
+  line-height: 1.15;
+  text-align: center;
+  width: 100%;
+}
 
   .item-card-image-wrap {
     width: 100%;

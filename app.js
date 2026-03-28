@@ -1196,41 +1196,38 @@ function renderCard(i) {
   card.className = "item-card";
 
   card.innerHTML = `
-    <div class="item-card-inner">
-      <div class="item-card-front">
-        <button class="delete-item-btn" data-id="${i.id}" aria-label="Teil löschen">
-          <span class="trash-icon"></span>
-        </button>
+  <div class="item-card-inner">
+    <div class="item-card-front">
+      <button class="delete-item-btn" data-id="${i.id}" aria-label="Teil löschen">
+        <span class="trash-icon"></span>
+      </button>
 
-        <div class="item-card-image-wrap">
-          <img src="${i.img}" alt="${i.type}">
-        </div>
-
-        <div class="item-card-front-text">
-          <div class="item-name">${i.type}</div>
-        </div>
+      <div class="item-card-image-wrap">
+        <img src="${i.img}" alt="${i.type}">
       </div>
 
-      <div class="item-card-back">
-        <button class="delete-item-btn" data-id="${i.id}" aria-label="Teil löschen">
-          <span class="trash-icon"></span>
-        </button>
-
-        <div class="item-back-title">${i.type}</div>
-        <div class="item-back-meta"><strong>Kategorie:</strong> ${i.mainCategory || "-"}</div>
-        <div class="item-back-meta"><strong>Farbe:</strong> ${i.color || "-"}</div>
-        <div class="item-back-meta"><strong>Anlass:</strong> ${(i.occasions || []).join(", ") || "-"}</div>
+      <div class="item-card-front-text">
+        <div class="item-name">${i.type}</div>
       </div>
     </div>
-  `;
 
-  card.querySelectorAll(".delete-item-btn").forEach(deleteBtn => {
-    deleteBtn.addEventListener("click", (e) => {
-      e.stopPropagation();
-      const id = deleteBtn.getAttribute("data-id");
-      deleteWardrobeItem(id);
+    <div class="item-card-back">
+      <div class="item-back-title">${i.type}</div>
+      <div class="item-back-meta"><strong>Kategorie:</strong> ${i.mainCategory || "-"}</div>
+      <div class="item-back-meta"><strong>Farbe:</strong> ${i.color || "-"}</div>
+      <div class="item-back-meta"><strong>Anlass:</strong> ${(i.occasions || []).join(", ") || "-"}</div>
+    </div>
+  </div>
+`;
+
+const deleteBtn = card.querySelector(".delete-item-btn");
+if (deleteBtn) {
+  deleteBtn.addEventListener("click", (e) => {
+    e.stopPropagation();
+    const id = deleteBtn.getAttribute("data-id");
+    deleteWardrobeItem(id);
     });
-  });
+  }
 
   let startX = 0;
   let startY = 0;
