@@ -1195,31 +1195,83 @@ function renderCard(i) {
   const card = document.createElement("div");
   card.className = "item-card";
 
-  const occasionsText = Array.isArray(i.occasions)
-    ? i.occasions.join(", ")
-    : (i.occasions || "");
-
   card.innerHTML = `
     <button class="delete-item-btn" data-id="${i.id}" aria-label="Teil löschen">
       <span class="trash-icon"></span>
     </button>
 
-    <img src="${i.img}" alt="${i.type}">
-    <div class="item-name">${i.type}</div>
-    <div class="item-meta">
-      ${i.mainCategory || ""} • ${occasionsText} • ${i.color || ""}
+    <div class="item-card-inner">
+      <div class="item-card-front">
+        <img src="${i.img}" alt="${i.type}">
+        <div class="item-name">${i.type}</div>
+      </div>
+
+      <div class="item-card-back">
+        <div class="item-back-title">${i.type}</div>
+        <div class="item-back-meta"><strong>Kategorie:</strong> ${i.mainCategory || "-"}</div>
+        <div class="item-back-meta"><strong>Farbe:</strong> ${i.color || "-"}</div>
+        <div class="item-back-meta"><strong>Anlass:</strong> ${(i.occasions || []).join(", ") || "-"}</div>
+      </div>
     </div>
   `;
 
   const deleteBtn = card.querySelector(".delete-item-btn");
+
   if (deleteBtn) {
     deleteBtn.addEventListener("click", (e) => {
       e.stopPropagation();
-
       const id = deleteBtn.getAttribute("data-id");
       deleteWardrobeItem(id);
     });
   }
+
+   let touchStartX = 0;
+  let touchStartY = 0;
+  let touchMoved = false;
+  let justHandledTouch = false;
+
+  card.addEventListener("touchstart", (e) => {
+    if (e.target.closest(".delete-item-btn")) return;
+
+    const touch = e.changedTouches[0];
+    touchStartX = touch.clientX;
+    touchStartY = touch.clientY;
+    touchMoved = false;
+  }, { passive: true });
+
+  card.addEventListener("touchmove", (e) => {
+    const touch = e.changedTouches[0];
+    const diffX = Math.abs(touch.clientX - touchStartX);
+    const diffY = Math.abs(touch.clientY - touchStartY);
+
+    if (diffX > 10 || diffY > 10) {
+      touchMoved = true;
+    }
+  }, { passive: true });
+
+  card.addEventListener("touchend", (e) => {
+    if (e.target.closest(".delete-item-btn")) return;
+    if (touchMoved) return;
+
+    justHandledTouch = true;
+    card.classList.toggle("flipped");
+
+    setTimeout(() => {
+      justHandledTouch = false;
+    }, 350);
+  });
+
+  card.addEventListener("click", (e) => {
+    if (e.target.closest(".delete-item-btn")) return;
+    if (justHandledTouch) return;
+
+    card.classList.toggle("flipped");
+  });
+
+  card.addEventListener("click", (e) => {
+    if (e.target.closest(".delete-item-btn")) return;
+    card.classList.toggle("flipped");
+  });
 
   return card;
 }
