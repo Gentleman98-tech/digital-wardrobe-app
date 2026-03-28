@@ -355,15 +355,6 @@ nav#sideMenu li.home-item:hover svg {
 }
 
 .item-card-front {
-  position: absolute;
-  inset: 0;
-}
-
-.item-card-back {
-  position: absolute;
-}
-
-.item-card-front {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -371,13 +362,6 @@ nav#sideMenu li.home-item:hover svg {
   background: rgba(255,255,255,0.72);
   border: 1px solid rgba(0,0,0,0.08);
   box-shadow: 0 10px 24px rgba(0,0,0,0.12);
-}
-
-.item-card-front .delete-item-btn {
-  position: absolute;
-  top: 8px;
-  left: 8px;
-  z-index: 5;
 }
 
 .item-card-back {
@@ -392,27 +376,6 @@ nav#sideMenu li.home-item:hover svg {
   box-shadow: 0 10px 24px rgba(0,0,0,0.12);
 }
 
-.item-card-back .delete-item-btn {
-  display: none !important;
-}
-.item-back-content {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 6px;
-  width: 100%;
-}
-
-.item-back-content {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  gap: 6px;
-  text-align: center;
-}
 .item-card-image-wrap {
   width: 100%;
   border-radius: 14px;
@@ -448,22 +411,9 @@ nav#sideMenu li.home-item:hover svg {
   color: rgba(0,0,0,0.62);
   font-size: 0.9rem;
 }
-.item-back-content {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  gap: 6px;
-  text-align: center;
-}
 
 /* Delete Button */
 .delete-item-btn {
-  position: absolute;
-  top: 10px;
-  left: 10px;
-  z-index: 3;
   width: 34px;
   height: 34px;
   border: none;
@@ -474,6 +424,13 @@ nav#sideMenu li.home-item:hover svg {
   justify-content: center;
   cursor: pointer;
   box-shadow: 0 3px 8px rgba(0,0,0,0.06);
+}
+
+.item-card-front .delete-item-btn {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  z-index: 5;
 }
 
 .trash-icon {
@@ -583,6 +540,16 @@ nav#sideMenu li.home-item:hover svg {
   background: var(--gold-dark);
 }
 
+.item-back-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  gap: 6px;
+  text-align: center;
+}
 /* Dropdown Kategorien – Obergruppen */
 .outfit-mini-select optgroup {
   font-weight: 700;
@@ -1224,7 +1191,10 @@ nav#sideMenu li.home-item:hover svg {
 
 .item-back-title {
   font-size: 0.74rem;
+  line-height: 1.05;
+  font-weight: 700;
   text-align: center;
+  margin: 0;
 }
 
 .item-back-meta {
@@ -1232,6 +1202,7 @@ nav#sideMenu li.home-item:hover svg {
   line-height: 1.15;
   text-align: center;
   width: 100%;
+  margin: 0;
 }
 
   .item-card-image-wrap {
