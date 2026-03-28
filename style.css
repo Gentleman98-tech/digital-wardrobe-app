@@ -1080,14 +1080,15 @@ nav#sideMenu li.home-item:hover svg {
   position: relative !important;
   display: block !important;
   min-height: 58px !important;
-  margin-bottom: 14px !important;
+  margin-top: 6px !important;
+  margin-bottom: 8px !important;
 }
 
 .closet-title {
   display: block !important;
   width: 100% !important;
   margin: 0 !important;
-  padding: 0 118px 0 44px !important;
+  padding: 0 110px 0 58px !important;
   font-size: 0.82rem !important;
   line-height: 1.1 !important;
   text-align: center !important;
