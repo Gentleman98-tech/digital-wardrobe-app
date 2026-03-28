@@ -1202,8 +1202,12 @@ function renderCard(i) {
 
     <div class="item-card-inner">
       <div class="item-card-front">
-        <img src="${i.img}" alt="${i.type}">
-        <div class="item-name">${i.type}</div>
+        <div class="item-card-image-wrap">
+          <img src="${i.img}" alt="${i.type}">
+        </div>
+        <div class="item-card-front-text">
+          <div class="item-name">${i.type}</div>
+        </div>
       </div>
 
       <div class="item-card-back">
@@ -1216,7 +1220,6 @@ function renderCard(i) {
   `;
 
   const deleteBtn = card.querySelector(".delete-item-btn");
-
   if (deleteBtn) {
     deleteBtn.addEventListener("click", (e) => {
       e.stopPropagation();
@@ -1225,57 +1228,36 @@ function renderCard(i) {
     });
   }
 
-   let touchStartX = 0;
-  let touchStartY = 0;
-  let touchMoved = false;
-  let justHandledTouch = false;
+  let startX = 0;
+  let startY = 0;
+  let moved = false;
 
-  card.addEventListener("touchstart", (e) => {
+  card.addEventListener("pointerdown", (e) => {
     if (e.target.closest(".delete-item-btn")) return;
 
-    const touch = e.changedTouches[0];
-    touchStartX = touch.clientX;
-    touchStartY = touch.clientY;
-    touchMoved = false;
-  }, { passive: true });
+    startX = e.clientX;
+    startY = e.clientY;
+    moved = false;
+  });
 
-  card.addEventListener("touchmove", (e) => {
-    const touch = e.changedTouches[0];
-    const diffX = Math.abs(touch.clientX - touchStartX);
-    const diffY = Math.abs(touch.clientY - touchStartY);
+  card.addEventListener("pointermove", (e) => {
+    const diffX = Math.abs(e.clientX - startX);
+    const diffY = Math.abs(e.clientY - startY);
 
-    if (diffX > 10 || diffY > 10) {
-      touchMoved = true;
+    if (diffX > 14 || diffY > 14) {
+      moved = true;
     }
-  }, { passive: true });
-
-  card.addEventListener("touchend", (e) => {
-    if (e.target.closest(".delete-item-btn")) return;
-    if (touchMoved) return;
-
-    justHandledTouch = true;
-    card.classList.toggle("flipped");
-
-    setTimeout(() => {
-      justHandledTouch = false;
-    }, 350);
   });
 
-  card.addEventListener("click", (e) => {
+  card.addEventListener("pointerup", (e) => {
     if (e.target.closest(".delete-item-btn")) return;
-    if (justHandledTouch) return;
+    if (moved) return;
 
-    card.classList.toggle("flipped");
-  });
-
-  card.addEventListener("click", (e) => {
-    if (e.target.closest(".delete-item-btn")) return;
     card.classList.toggle("flipped");
   });
 
   return card;
 }
-
   function renderSectionTitle(label, count) {
     const t = document.createElement("div");
     t.className = "section-title";
