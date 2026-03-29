@@ -1238,6 +1238,9 @@ function renderCard(i) {
           <div class="item-back-title">${i.type}</div>
           <div class="item-back-meta"><strong>Kategorie:</strong> ${i.mainCategory || "-"}</div>
           <div class="item-back-meta"><strong>Farbe:</strong> ${i.color || "-"}</div>
+          <div class="item-back-meta"><strong>Größe:</strong> ${i.size || "-"}</div>
+          <div class="item-back-meta"><strong>Marke:</strong> ${i.brand || "-"}</div>
+          <div class="item-back-meta"><strong>Shop:</strong> ${i.marketplace || "-"}</div>
           <div class="item-back-meta"><strong>Anlass:</strong> ${(i.occasions || []).join(", ") || "-"}</div>
         </div>
       </div>
@@ -1482,7 +1485,7 @@ if (mainCategorySelect && typeSelect) {
 }
 
 updateSizeSelectByCategory();
-
+}
 
 function closeAddModal() {
   const modal = document.getElementById("addModal");
@@ -1597,5 +1600,5 @@ async function initApp() {
   await loadSavedOutfits();
   renderHome();
 }
-}
+
 initApp();
