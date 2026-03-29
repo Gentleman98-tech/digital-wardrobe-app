@@ -16,6 +16,17 @@ body, input, select, button {
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  min-height: 100%;
+}
+
+body {
+  background: #f5f1e8;
+}
+
 /* Hintergrundbild mit Blur */
 body::before {
   content: "";
@@ -39,8 +50,9 @@ body::after {
 }
 
 /* Main Container */
-main#content{
-  height: 100vh;
+main#content {
+  min-height: 100vh;
+  min-height: 100dvh;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1030,17 +1042,23 @@ nav#sideMenu li.home-item:hover svg {
    iPHONE
 ========================================================= */
 @media (max-width: 767px) {
-  html, body {
-    touch-action: manipulation;
-    margin: 0;
-    padding: 0;
-    width: 100%;
-    overflow-x: hidden;
-  }
+html, body {
+  touch-action: manipulation;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  min-height: 100%;
+  overflow-x: hidden;
+}
 
-  body {
-    background: #f5f1e8;
-  }
+body {
+  background: #f5f1e8;
+  padding-top: env(safe-area-inset-top);
+}
+
+header {
+  top: calc(env(safe-area-inset-top) + 8px);
+}
 
   .closet-panel,
   .outfits-panel {
