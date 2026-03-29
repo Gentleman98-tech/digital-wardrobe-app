@@ -1241,7 +1241,7 @@ function renderCard(i) {
           <div class="item-back-meta"><strong>Größe:</strong> ${i.size || "-"}</div>
           <div class="item-back-meta"><strong>Marke:</strong> ${i.brand || "-"}</div>
           <div class="item-back-meta"><strong>Shop:</strong> ${i.marketplace || "-"}</div>
-          <div class="item-back-meta"><strong>Anlass:</strong> ${(i.occasions || []).join(", ") || "-"}</div>
+          <div class="item-back-meta"><strong>Anlass:</strong> ${(Array.isArray(i.occasions) ? i.occasions.join(", ") : i.occasions || "-") || "-"}</div>
         </div>
       </div>
 
