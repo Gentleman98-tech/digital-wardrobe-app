@@ -317,7 +317,13 @@ function buildGroupedOptions(groups) {
   `).join("");
 }
 
-
+function buildGroupedOptions(groups) {
+  return groups.map(group => `
+    <optgroup label="${group.group}">
+      ${group.items.map(item => `<option value="${item}">${item}</option>`).join("")}
+    </optgroup>
+  `).join("");
+}
 
 ;
 
@@ -578,10 +584,10 @@ function renderOutfits() {
             </div>
 
             <div class="outfit-local-filters">
-              <select class="outfit-mini-select" id="topTypeFilter">
-                <option value="">Alle</option>
-                ${buildGroupedOptions(outfitFilterOptions.top)}
-              </select>
+            <select class="outfit-mini-select" id="topTypeFilter">
+  <option value="">Alle</option>
+  ${buildSimpleOptions(outfitFilterOptions.top)}
+</select>
 
               <select class="outfit-mini-select" id="topColorFilter">
   ${buildColorOptions()}
@@ -604,9 +610,9 @@ function renderOutfits() {
 
             <div class="outfit-local-filters">
               <select class="outfit-mini-select" id="bottomTypeFilter">
-                <option value="">Alle</option>
-                ${buildGroupedOptions(outfitFilterOptions.pants)}
-              </select>
+  <option value="">Alle</option>
+  ${buildSimpleOptions(outfitFilterOptions.pants)}
+</select>
 
               <select class="outfit-mini-select" id="bottomColorFilter">
   ${buildColorOptions()}
@@ -629,9 +635,9 @@ function renderOutfits() {
 
             <div class="outfit-local-filters">
               <select class="outfit-mini-select" id="shoeTypeFilter">
-                <option value="">Alle</option>
-                ${buildGroupedOptions(outfitFilterOptions.shoes)}
-              </select>
+  <option value="">Alle</option>
+  ${buildSimpleOptions(outfitFilterOptions.shoes)}
+</select>
 
               <select class="outfit-mini-select" id="shoeColorFilter">
   ${buildColorOptions()}
