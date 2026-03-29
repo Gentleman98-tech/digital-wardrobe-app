@@ -219,32 +219,9 @@ const categoryStructure = [
 ]
 
 const outfitFilterOptions = {
-  top: [
-    "T-Shirt Sport",
-    "T-Shirt Casual",
-    "Poloshirts",
-    "Pullover",
-    "Hoodies",
-    "Strickjacken",
-    "Polokragen-Jacken",
-    "Trainingsjacken",
-    "Hemd Business",
-    "Hemd Casual"
-  ],
-  pants: [
-    "Jeans",
-    "Chinos",
-    "Anzughose",
-    "Jogger",
-    "Shorts",
-    "Sporthose"
-  ],
-  shoes: [
-    "Sneaker",
-    "Chelsea Boots",
-    "Sportschuhe",
-    "Anzugschuhe"
-  ]
+  top: typeOptions.Oberteile,
+  pants: typeOptions.Hosen,
+  shoes: typeOptions.Schuhe
 };
 
 const COLOR_OPTIONS = [
