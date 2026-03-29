@@ -611,7 +611,12 @@ function renderOutfits() {
             <div class="outfit-local-filters">
               <select class="outfit-mini-select" id="bottomTypeFilter">
   <option value="">Alle</option>
-  ${buildSimpleOptions(outfitFilterOptions.pants)}
+  <option value="Jeans">Jeans</option>
+  <option value="Chinos">Chinos</option>
+  <option value="Jogger">Jogger</option>
+  <option value="Shorts">Shorts</option>
+  <option value="Sporthose">Sporthose</option>
+  <option value="Anzughose">Anzughose</option>
 </select>
 
               <select class="outfit-mini-select" id="bottomColorFilter">
