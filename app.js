@@ -217,7 +217,10 @@ const outfitFilterOptions = {
   pants: [
     "Jeans",
     "Chino",
-    "Anzughose"
+    "Anzughose",
+    "Jogger",
+    "Shorts",
+    "Sporthosen"
   ],
   shoes: [
     "Sneaker",
@@ -226,6 +229,63 @@ const outfitFilterOptions = {
     "Anzugschuhe"
   ]
 };
+
+const COLOR_OPTIONS = [
+  "weiß",
+  "schwarz",
+  "grau",
+  "dunkelgrau",
+  "beige",
+  "creme",
+  "braun",
+  "dunkelbraun",
+  "navy",
+  "blau",
+  "hellblau",
+  "grün",
+  "olive",
+  "rot",
+  "bordeaux",
+  "rosa",
+  "lila",
+  "gelb",
+  "orange"
+];
+function buildColorOptions(selectedValue = "") {
+  return `
+    <option value="">Alle Farben</option>
+    ${COLOR_OPTIONS.map(color => `
+      <option value="${color}" ${selectedValue === color ? "selected" : ""}>${color}</option>
+    `).join("")}
+  `;
+}
+
+const TOP_SIZE_OPTIONS = ["XL", "XXL", "3XL"];
+
+function buildSizeOptions(options = [], placeholder = "Bitte wählen") {
+  return `
+    <option value="">${placeholder}</option>
+    ${options.map(size => `<option value="${size}">${size}</option>`).join("")}
+  `;
+}
+
+function updateSizeSelectByCategory() {
+  const categorySelect = document.getElementById("mainCategorySelect");
+  const sizeSelect = document.getElementById("sizeSelect");
+
+  if (!categorySelect || !sizeSelect) return;
+
+  const category = categorySelect.value;
+
+  if (category === "Oberteile") {
+    sizeSelect.innerHTML = buildSizeOptions(TOP_SIZE_OPTIONS, "Größe wählen");
+    sizeSelect.disabled = false;
+  } else {
+    sizeSelect.innerHTML = `<option value="">Derzeit nur für Oberteile</option>`;
+    sizeSelect.disabled = true;
+  }
+}
+
 const outfitGroupedOptions = {
   top: [
     {
@@ -399,69 +459,6 @@ let wardrobeItems = [
 ];
 
 
-// ====== HELPERS: LOAD/SAVE ======
-async function saveNewItem() {
-  const fileInput = document.getElementById("photoInput");
-  const mainCategory = document.getElementById("mainCategorySelect").value;
-  const type = document.getElementById("typeSelect").value;
-  const color = document.getElementById("colorSelect").value;
-
-  const occasionCheckboxes = document.querySelectorAll(".occasion-checkboxes input:checked");
-  const selectedOccasions = Array.from(occasionCheckboxes).map(cb => cb.value);
-
-  if (!mainCategory || !type || !color) {
-    alert("Bitte Kategorie, Typ und Farbe auswählen.");
-    return;
-  }
-
-  if (!selectedOccasions.length) {
-    alert("Bitte mindestens einen Anlass auswählen.");
-    return;
-  }
-
-  let imageUrl = "images/closet.jpeg";
-  const file = fileInput.files && fileInput.files[0];
-
-  if (file) {
-    const safeFileName = `${Date.now()}-${file.name.replace(/\s+/g, "_")}`;
-
-    const { error: uploadError } = await supabaseClient.storage
-      .from("wardrobe-images")
-      .upload(safeFileName, file);
-
-    if (uploadError) {
-      console.error("Fehler beim Bild-Upload:", uploadError);
-      alert("Bild konnte nicht hochgeladen werden.");
-      return;
-    }
-
-    const { data: publicUrlData } = supabaseClient.storage
-      .from("wardrobe-images")
-      .getPublicUrl(safeFileName);
-
-    imageUrl = publicUrlData.publicUrl;
-  }
-
-  const { error } = await supabaseClient
-    .from("wardrobe_items")
-    .insert([{
-      main_category: mainCategory,
-      type: type,
-      color: color,
-      occasions: selectedOccasions,
-      image_url: imageUrl
-    }]);
-
-  if (error) {
-    console.error("Fehler beim Speichern:", error);
-    alert("Fehler beim Speichern");
-    return;
-  }
-
-  closeAddModal();
-  await loadItems();
-  renderCloset(currentClosetFilter);
-}
 
 
 function saveItems() {
@@ -593,13 +590,8 @@ function renderOutfits() {
               </select>
 
               <select class="outfit-mini-select" id="topColorFilter">
-                <option value="">Alle Farben</option>
-                <option>hellblau</option>
-                <option>weiß</option>
-                <option>schwarz</option>
-                <option>beige</option>
-                <option>olive</option>
-              </select>
+  ${buildColorOptions()}
+</select>
             </div>
 
             <div class="outfit-rondell">
@@ -623,12 +615,8 @@ function renderOutfits() {
               </select>
 
               <select class="outfit-mini-select" id="bottomColorFilter">
-                <option value="">Alle Farben</option>
-                <option>beige</option>
-                <option>schwarz</option>
-                <option>dunkelblau</option>
-                <option>weiß</option>
-              </select>
+  ${buildColorOptions()}
+</select>
             </div>
 
             <div class="outfit-rondell">
@@ -652,12 +640,8 @@ function renderOutfits() {
               </select>
 
               <select class="outfit-mini-select" id="shoeColorFilter">
-                <option value="">Alle Farben</option>
-                <option>weiß</option>
-                <option>schwarz</option>
-                <option>dunkelblau</option>
-                <option>braun</option>
-              </select>
+  ${buildColorOptions()}
+</select>
             </div>
 
             <div class="outfit-rondell">
@@ -1389,76 +1373,67 @@ function openAddModal() {
       <label>Foto</label>
       <input type="file" id="photoInput" accept="image/*">
 
-    <label>Kategorie</label>
-<select id="mainCategorySelect">
-  <option value="">Bitte wählen</option>
-  <option>Oberteile</option>
-  <option>Hosen</option>
-  <option>Schuhe</option>
-</select>
+      <label>Kategorie</label>
+      <select id="mainCategorySelect">
+        <option value="">Bitte wählen</option>
+        <option>Oberteile</option>
+        <option>Hosen</option>
+        <option>Schuhe</option>
+      </select>
 
- <label>Typ</label>
-<select id="typeSelect">
-  <option value="">Bitte zuerst Kategorie wählen</option>
-</select>
+      <label>Typ</label>
+      <select id="typeSelect">
+        <option value="">Bitte zuerst Kategorie wählen</option>
+      </select>
 
-<label>Farbe</label>
-<select id="colorSelect">
-  <option>schwarz</option>
-  <option>weiß</option>
-  <option>braun</option>
-  <option>grau</option>
-  <option>olive</option>
-   <option>hellblau</option>
-    <option>dunkelblau</option>
-     <option>rosa</option>
-</select>
+      <label>Farbe</label>
+      <select id="colorSelect">
+        ${buildColorOptions("").replace('<option value="">Alle Farben</option>', '<option value="">Bitte wählen</option>')}
+      </select>
 
-<div class="add-field">
-  <label class="field-label">Anlass</label>
+      <label>Marke</label>
+      <input type="text" id="brandInput" placeholder="z. B. COS, Zara, Jack & Jones">
 
-  <div class="occasion-checkboxes">
-  <label class="occasion-option">
-    <input type="checkbox" value="Business">
-    <span>Business</span>
-  </label>
+      <label>Shop / Marketplace</label>
+      <input type="text" id="marketplaceInput" placeholder="z. B. Zalando, Vinted, About You">
 
-  <label class="occasion-option">
-    <input type="checkbox" value="Business Casual">
-    <span>Business Casual</span>
-  </label>
+      <label>Größe</label>
+      <select id="sizeSelect">
+        <option value="">Bitte zuerst Kategorie wählen</option>
+      </select>
 
-  <label class="occasion-option">
-    <input type="checkbox" value="Freizeit">
-    <span>Freizeit</span>
-  </label>
+      <div class="add-field">
+        <label class="field-label">Anlass</label>
 
-  <label class="occasion-option">
-    <input type="checkbox" value="Sport">
-    <span>Sport</span>
-  </label>
-</div>
-</div>
+        <div class="occasion-checkboxes">
+          <label class="occasion-option">
+            <input type="checkbox" value="Business">
+            <span>Business</span>
+          </label>
 
+          <label class="occasion-option">
+            <input type="checkbox" value="Business Casual">
+            <span>Business Casual</span>
+          </label>
+
+          <label class="occasion-option">
+            <input type="checkbox" value="Freizeit">
+            <span>Freizeit</span>
+          </label>
+
+          <label class="occasion-option">
+            <input type="checkbox" value="Sport">
+            <span>Sport</span>
+          </label>
+        </div>
+      </div>
 
       <div class="add-modal-actions">
-  <button id="cancelBtn" class="btn-secondary">Abbrechen</button>
-  <button id="saveBtn" class="btn-primary">Speichern</button>
-</div>
+        <button id="cancelBtn" class="btn-secondary">Abbrechen</button>
+        <button id="saveBtn" class="btn-primary">Speichern</button>
+      </div>
     </div>
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-    `;
-
+  `;
     function fillTypeSelectByCategory(category, selectElement) {
   selectElement.innerHTML = "";
 
@@ -1477,36 +1452,36 @@ function openAddModal() {
   });
 }
 
-  document.body.appendChild(modal);
-    modal.querySelector(".modal-backdrop").addEventListener("click", closeAddModal);
-  document.getElementById("cancelBtn").addEventListener("click", closeAddModal);
-  document.getElementById("saveBtn").addEventListener("click", saveNewItem);
+document.body.appendChild(modal);
 
+const backdrop = modal.querySelector(".modal-backdrop");
+const cancelBtn = document.getElementById("cancelBtn");
+const saveBtn = document.getElementById("saveBtn");
 
 const mainCategorySelect = document.getElementById("mainCategorySelect");
 const typeSelect = document.getElementById("typeSelect");
+const sizeSelect = document.getElementById("sizeSelect");
 
-if (mainCategorySelect && typeSelect) {
-  mainCategorySelect.addEventListener("change", () => {
-    fillTypeSelectByCategory(mainCategorySelect.value, typeSelect);
-  });
-}
-
-const backdrop = modal.querySelector(".modal-backdrop");
 if (backdrop) {
   backdrop.addEventListener("click", closeAddModal);
 }
 
-const cancelBtn = document.getElementById("cancelBtn");
 if (cancelBtn) {
   cancelBtn.addEventListener("click", closeAddModal);
 }
 
-const saveBtn = document.getElementById("saveBtn");
 if (saveBtn) {
   saveBtn.addEventListener("click", saveNewItem);
 }
+
+if (mainCategorySelect && typeSelect) {
+  mainCategorySelect.addEventListener("change", () => {
+    fillTypeSelectByCategory(mainCategorySelect.value, typeSelect);
+    updateSizeSelectByCategory();
+  });
 }
+
+updateSizeSelectByCategory();
 
 
 function closeAddModal() {
@@ -1529,6 +1504,9 @@ async function saveNewItem() {
   const mainCategory = document.getElementById("mainCategorySelect").value;
   const type = document.getElementById("typeSelect").value;
   const color = document.getElementById("colorSelect").value;
+  const brand = document.getElementById("brandInput")?.value.trim() || "";
+  const marketplace = document.getElementById("marketplaceInput")?.value.trim() || "";
+  const size = document.getElementById("sizeSelect")?.value || "";
 
   const occasionCheckboxes = document.querySelectorAll(".occasion-checkboxes input:checked");
   const selectedOccasions = Array.from(occasionCheckboxes).map(cb => cb.value);
@@ -1538,28 +1516,33 @@ async function saveNewItem() {
     return;
   }
 
- let imageUrl = "images/closet.jpeg";
-const file = fileInput.files && fileInput.files[0];
-
-if (file) {
-  const safeFileName = `${Date.now()}-${file.name.replace(/\s+/g, "_")}`;
-
-  const { error: uploadError } = await supabaseClient.storage
-    .from("wardrobe-images")
-    .upload(safeFileName, file);
-
-  if (uploadError) {
-    console.error("Fehler beim Bild-Upload:", uploadError);
-    alert("Bild konnte nicht hochgeladen werden.");
+  if (!selectedOccasions.length) {
+    alert("Bitte mindestens einen Anlass auswählen.");
     return;
   }
 
-  const { data: publicUrlData } = supabaseClient.storage
-    .from("wardrobe-images")
-    .getPublicUrl(safeFileName);
+  let imageUrl = "images/closet.jpeg";
+  const file = fileInput.files && fileInput.files[0];
 
-  imageUrl = publicUrlData.publicUrl;
-}
+  if (file) {
+    const safeFileName = `${Date.now()}-${file.name.replace(/\s+/g, "_")}`;
+
+    const { error: uploadError } = await supabaseClient.storage
+      .from("wardrobe-images")
+      .upload(safeFileName, file);
+
+    if (uploadError) {
+      console.error("Fehler beim Bild-Upload:", uploadError);
+      alert("Bild konnte nicht hochgeladen werden.");
+      return;
+    }
+
+    const { data: publicUrlData } = supabaseClient.storage
+      .from("wardrobe-images")
+      .getPublicUrl(safeFileName);
+
+    imageUrl = publicUrlData.publicUrl;
+  }
 
   const { error } = await supabaseClient
     .from("wardrobe_items")
@@ -1567,6 +1550,9 @@ if (file) {
       main_category: mainCategory,
       type: type,
       color: color,
+      brand: brand,
+      marketplace: marketplace,
+      size: size,
       occasions: selectedOccasions,
       image_url: imageUrl
     }]);
@@ -1578,8 +1564,7 @@ if (file) {
   }
 
   closeAddModal();
-
-  await loadItems();          // 🔥 neu laden aus DB
+  await loadItems();
   renderCloset(currentClosetFilter);
 }
 
@@ -1598,7 +1583,10 @@ async function loadItems() {
     id: item.id,
     mainCategory: item.main_category,
     type: item.type,
-    color: item.color,
+    color: item.color || "",
+    brand: item.brand || "",
+    marketplace: item.marketplace || "",
+    size: item.size || "",
     occasions: item.occasions || [],
     img: item.image_url || "images/closet.jpeg"
   }));
@@ -1609,5 +1597,5 @@ async function initApp() {
   await loadSavedOutfits();
   renderHome();
 }
-
+}
 initApp();
