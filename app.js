@@ -136,6 +136,9 @@ const typeOptions = {
   Hosen: [
     "Jeans",
     "Chinos",
+    "Jogger",
+    "Shorts",
+    "Sporthose",
     "Anzughose"
   ],
   Schuhe: [
