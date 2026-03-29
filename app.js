@@ -580,7 +580,7 @@ function renderOutfits() {
             <div class="outfit-local-filters">
               <select class="outfit-mini-select" id="topTypeFilter">
                 <option value="">Alle</option>
-                ${buildGroupedOptions(outfitGroupedOptions.top)}
+                ${buildGroupedOptions(outfitFilterOptions.top)}
               </select>
 
               <select class="outfit-mini-select" id="topColorFilter">
@@ -605,7 +605,7 @@ function renderOutfits() {
             <div class="outfit-local-filters">
               <select class="outfit-mini-select" id="bottomTypeFilter">
                 <option value="">Alle</option>
-                ${buildGroupedOptions(outfitGroupedOptions.pants)}
+                ${buildGroupedOptions(outfitFilterOptions.pants)}
               </select>
 
               <select class="outfit-mini-select" id="bottomColorFilter">
@@ -630,7 +630,7 @@ function renderOutfits() {
             <div class="outfit-local-filters">
               <select class="outfit-mini-select" id="shoeTypeFilter">
                 <option value="">Alle</option>
-                ${buildGroupedOptions(outfitGroupedOptions.shoes)}
+                ${buildGroupedOptions(outfitFilterOptions.shoes)}
               </select>
 
               <select class="outfit-mini-select" id="shoeColorFilter">
