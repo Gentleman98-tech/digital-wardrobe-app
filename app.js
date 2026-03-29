@@ -147,6 +147,20 @@ const typeOptions = {
     "Anzugschuhe"
   ]
 };
+function getTypesForCategory(category) {
+  const fromDB = wardrobeItems
+    .filter(item => item.mainCategory === category)
+    .map(item => item.type)
+    .filter(Boolean);
+
+  const merged = new Set([
+    ...(typeOptions[category] || []),
+    ...fromDB
+  ]);
+
+  return [...merged].sort((a, b) => a.localeCompare(b, "de"));
+}
+
 // ====== KATEGORIE-STRUKTUR (für Modal Dropdown) ======
 const categoryStructure = [
   {
@@ -219,11 +233,11 @@ const outfitFilterOptions = {
   ],
   pants: [
     "Jeans",
-    "Chino",
+    "Chinos",
     "Anzughose",
     "Jogger",
     "Shorts",
-    "Sporthosen"
+    "Sporthose"
   ],
   shoes: [
     "Sneaker",
