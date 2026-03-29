@@ -565,6 +565,9 @@ function renderHome() {
 function renderOutfits() {
   content.innerHTML = `
     <div class="closet-panel outfits-panel">
+      <button class="outfits-sidebar-toggle" id="outfitsSidebarToggle">❯</button>
+      <div class="outfits-sidebar-backdrop" id="outfitsSidebarBackdrop"></div>
+
       <div class="outfits-layout">
 
         <div class="outfits-main">
@@ -689,6 +692,7 @@ function renderOutfits() {
   initLocalOutfitFilters();
   initSaveOutfitButton();
   renderSavedOutfits();
+  initOutfitsSidebarToggle();
 }
 
 function renderSavedOutfits() {
@@ -764,6 +768,37 @@ document.querySelectorAll(".delete-saved-outfit-btn").forEach(btn => {
     renderSavedOutfits();
   });
 });
+}
+
+function initOutfitsSidebarToggle() {
+  const toggleBtn = document.getElementById("outfitsSidebarToggle");
+  const sidebar = document.querySelector(".outfits-sidebar");
+  const backdrop = document.getElementById("outfitsSidebarBackdrop");
+
+  if (!toggleBtn || !sidebar || !backdrop) return;
+
+  const closeSidebar = () => {
+    sidebar.classList.remove("open");
+    backdrop.classList.remove("open");
+    toggleBtn.textContent = "❯";
+  };
+
+  const openSidebar = () => {
+    sidebar.classList.add("open");
+    backdrop.classList.add("open");
+    toggleBtn.textContent = "❮";
+  };
+
+  toggleBtn.addEventListener("click", () => {
+    const isOpen = sidebar.classList.contains("open");
+    if (isOpen) {
+      closeSidebar();
+    } else {
+      openSidebar();
+    }
+  });
+
+  backdrop.addEventListener("click", closeSidebar);
 }
 
 function initOutfitTopFilters() {
