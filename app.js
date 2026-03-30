@@ -770,13 +770,6 @@ function initOutfitsSidebarToggle() {
 
   if (!toggleBtn || !sidebar || !backdrop) return;
 
-  const closeSidebar = () => {
-    sidebar.classList.remove("open");
-    backdrop.classList.remove("open");
-    toggleBtn.classList.remove("open");
-    toggleBtn.textContent = "❯";
-  };
-
   const openSidebar = () => {
     sidebar.classList.add("open");
     backdrop.classList.add("open");
@@ -784,6 +777,14 @@ function initOutfitsSidebarToggle() {
     toggleBtn.textContent = "❮";
   };
 
+  const closeSidebar = () => {
+    sidebar.classList.remove("open");
+    backdrop.classList.remove("open");
+    toggleBtn.classList.remove("open");
+    toggleBtn.textContent = "❯";
+  };
+
+  // Klick bleibt zusätzlich möglich
   toggleBtn.addEventListener("click", () => {
     if (sidebar.classList.contains("open")) {
       closeSidebar();
@@ -793,6 +794,48 @@ function initOutfitsSidebarToggle() {
   });
 
   backdrop.addEventListener("click", closeSidebar);
+
+  // ===== Swipe auf der Leiste: nach links = öffnen =====
+  let toggleStartX = 0;
+  let toggleStartY = 0;
+
+  toggleBtn.addEventListener("touchstart", (e) => {
+    const touch = e.touches[0];
+    toggleStartX = touch.clientX;
+    toggleStartY = touch.clientY;
+  }, { passive: true });
+
+  toggleBtn.addEventListener("touchend", (e) => {
+    const touch = e.changedTouches[0];
+    const diffX = touch.clientX - toggleStartX;
+    const diffY = touch.clientY - toggleStartY;
+
+    // nach links wischen auf der Leiste
+    if (diffX < -30 && Math.abs(diffY) < 40) {
+      openSidebar();
+    }
+  }, { passive: true });
+
+  // ===== Swipe auf der Sidebar: nach rechts = schließen =====
+  let sidebarStartX = 0;
+  let sidebarStartY = 0;
+
+  sidebar.addEventListener("touchstart", (e) => {
+    const touch = e.touches[0];
+    sidebarStartX = touch.clientX;
+    sidebarStartY = touch.clientY;
+  }, { passive: true });
+
+  sidebar.addEventListener("touchend", (e) => {
+    const touch = e.changedTouches[0];
+    const diffX = touch.clientX - sidebarStartX;
+    const diffY = touch.clientY - sidebarStartY;
+
+    // nach rechts wischen auf der Sidebar
+    if (diffX > 30 && Math.abs(diffY) < 40) {
+      closeSidebar();
+    }
+  }, { passive: true });
 }
 function initOutfitTopFilters() {
   const buttons = document.querySelectorAll(".outfit-top-filter");
