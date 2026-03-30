@@ -1325,6 +1325,7 @@ nav#sideMenu li.home-item:hover svg {
 
 .outfits-sidebar-toggle.open {
   right: min(60vw, 240px) !important;
+  transform: translateX(8px) !important;
 }
   .outfits-sidebar {
     position: fixed !important;
@@ -1482,10 +1483,13 @@ nav#sideMenu li.home-item:hover svg {
 }
 
 .outfits-sidebar .saved-outfits-list {
-  width: 64% !important;
-  margin: 0 auto !important;
-  grid-template-columns: repeat(2, 1fr) !important;
-  gap: 14px !important;
+  width: calc(100% - 44px) !important;
+  margin: 0 0 0 28px !important;
+  display: grid !important;
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  gap: 12px !important;
+  align-content: start !important;
+  justify-content: start !important;
 }
 
 .outfits-sidebar .saved-outfit-card {
