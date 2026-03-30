@@ -675,7 +675,7 @@ function renderOutfits() {
       </div>
     </div>
   `;
-console.log("Outfits gestartet");
+
 
   initOutfitRondells();
  initOutfitTopFilters();
@@ -683,6 +683,9 @@ console.log("Outfits gestartet");
   initSaveOutfitButton();
   renderSavedOutfits();
   initOutfitsSidebarToggle();
+}
+function buildSimpleOptions(items) {
+  return items.map(item => `<option value="${item}">${item}</option>`).join("");
 }
 
 function renderSavedOutfits() {
