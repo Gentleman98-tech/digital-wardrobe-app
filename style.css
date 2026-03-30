@@ -1473,32 +1473,26 @@ nav#sideMenu li.home-item:hover svg {
 }
 
 .outfits-sidebar .saved-outfits-list {
-  width: 76% !important;
+  width: 64% !important;
   margin: 0 auto !important;
-  display: grid !important;
-  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
-  gap: 12px !important;
-  max-height: none !important;
-  overflow-y: visible !important;
-  align-content: start !important;
+  grid-template-columns: repeat(2, 1fr) !important;
+  gap: 14px !important;
 }
 
 .outfits-sidebar .saved-outfit-card {
-  width: 100% !important;
-  min-height: 170px !important;
-  padding: 10px 8px 8px !important;
+  min-height: 190px !important;
+  padding: 10px 6px 6px !important;
   border-radius: 14px !important;
-  justify-self: center !important;
 }
 
 .outfits-sidebar .saved-outfit-slot {
-  height: 52px !important;
+  height: 64px !important;
   border-radius: 10px !important;
 }
 
 .outfits-sidebar .saved-outfit-img {
-  max-width: 88% !important;
-  max-height: 88% !important;
+  max-width: 96% !important;
+  max-height: 96% !important;
 }
   .saved-outfit-number {
     font-size: 0.7rem;
