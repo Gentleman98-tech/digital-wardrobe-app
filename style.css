@@ -1268,36 +1268,37 @@ nav#sideMenu li.home-item:hover svg {
     border-radius: 999px;
   }
 
-  .outfits-panel {
-    position: relative;
-    height: auto !important;
-    min-height: calc(100dvh - 110px);
-    overflow: visible !important;
-    padding-bottom: 28px !important;
-  }
+.outfits-panel {
+  position: relative;
+  height: auto !important;
+  min-height: calc(100dvh - 110px);
+  overflow: visible !important;
+  padding-bottom: 28px !important;
+}
 
-  .outfits-layout {
-    display: block !important;
-    height: auto !important;
-  }
+.outfits-layout {
+  display: block !important;
+  height: auto !important;
+}
 
-  .outfits-main {
-    min-width: 0;
-    padding-bottom: 90px !important;
-  }
+.outfits-main {
+  min-width: 0;
+  padding-bottom: 90px !important;
+}
 
-  .outfits-panel .closet-title,
-  .outfits-panel h1 {
-    font-size: 1.55rem;
-    text-align: center;
-    margin-bottom: 8px;
-  }
+.outfits-panel .closet-title,
+.outfits-panel h1 {
+  font-size: 1.55rem;
+  text-align: center;
+  margin-bottom: 8px;
+}
 
-  .outfits-sidebar-toggle,
-  .outfits-sidebar-backdrop {
-    display: block;
-  }
+/* Nur Backdrop sichtbar schaltbar */
+.outfits-sidebar-backdrop {
+  display: block;
+}
 
+/* Leiste nur im geschlossenen Zustand sichtbar */
 .outfits-sidebar-toggle {
   position: fixed !important;
   top: calc(env(safe-area-inset-top) + 90px) !important;
@@ -1323,142 +1324,14 @@ nav#sideMenu li.home-item:hover svg {
   box-shadow: 0 6px 18px rgba(0,0,0,0.08) !important;
 }
 
+/* Im geöffneten Zustand komplett ausblenden */
 .outfits-sidebar-toggle.open {
-  display: none !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+  visibility: hidden !important;
 }
-  .outfits-sidebar {
-    position: fixed !important;
-    top: 0;
-    right: 0;
-    width: min(82vw, 320px);
-    height: 100dvh;
-    z-index: 9999;
-    transform: translateX(100%);
-    transition: transform 0.28s ease;
-    background: linear-gradient(180deg, #e6dcc3, #d8c8a0);
-    border-left: 1px solid rgba(0,0,0,0.10);
-    border-radius: 18px 0 0 18px;
-    padding: calc(env(safe-area-inset-top) + 56px) 14px 20px;
-    overflow-y: auto;
-    -webkit-overflow-scrolling: touch;
-  }
 
-  .outfits-sidebar.open {
-    transform: translateX(0);
-  }
-
-  .outfits-sidebar-backdrop {
-    position: fixed;
-    inset: 0;
-    background: rgba(0,0,0,0.24);
-    z-index: 9998;
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.25s ease;
-  }
-
-  .outfits-sidebar-backdrop.open {
-    opacity: 1;
-    pointer-events: auto;
-  }
-
-  .outfit-global-filters {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 6px;
-    margin-top: 6px;
-    margin-bottom: 8px;
-  }
-
-  .outfit-top-filter {
-    padding: 6px 10px;
-    font-size: 0.76rem;
-    border-radius: 10px;
-    min-height: 30px;
-  }
-
-  .outfit-section-block {
-    margin-bottom: 10px;
-  }
-
-  .outfit-section-block:last-of-type {
-    margin-bottom: 20px !important;
-  }
-
-  .outfit-section-head {
-    margin-bottom: 6px;
-  }
-
-  .outfit-section-label {
-    font-size: 0.92rem;
-  }
-
-  .outfit-local-filters {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 6px;
-    margin-bottom: 6px;
-    justify-content: flex-start;
-  }
-
-  .outfit-mini-select {
-    min-width: 108px;
-    height: 30px;
-    font-size: 0.74rem;
-    padding: 0 26px 0 8px;
-    border-radius: 10px;
-  }
-
-  .outfit-rondell {
-    min-height: 120px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 4px;
-  }
-
-  .outfit-center-card {
-    width: 96px;
-    height: 130px;
-    border-radius: 14px;
-  }
-
-  .outfit-side-card {
-    width: 34px;
-    height: 62px;
-    border-radius: 10px;
-  }
-
-  .outfit-center-card img,
-  .outfit-side-card img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-  }
-
-  .outfit-arrow {
-    width: 26px;
-    height: 26px;
-    font-size: 0.78rem;
-  }
-
-  .outfit-save-row {
-    display: flex !important;
-    justify-content: center !important;
-    margin-top: 18px !important;
-    margin-bottom: 26px !important;
-    position: relative;
-    z-index: 2;
-  }
-
-  .outfit-save-btn {
-    padding: 9px 12px;
-    font-size: 0.8rem;
-    border-radius: 12px;
-  }
-
- .outfits-sidebar {
+.outfits-sidebar {
   position: fixed !important;
   top: 0;
   right: 0;
@@ -1473,6 +1346,121 @@ nav#sideMenu li.home-item:hover svg {
   padding: calc(env(safe-area-inset-top) + 56px) 10px 34px !important;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
+}
+
+.outfits-sidebar.open {
+  transform: translateX(0);
+}
+
+.outfits-sidebar-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.24);
+  z-index: 9998;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease;
+}
+
+.outfits-sidebar-backdrop.open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.outfit-global-filters {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 6px;
+  margin-top: 6px;
+  margin-bottom: 8px;
+}
+
+.outfit-top-filter {
+  padding: 6px 10px;
+  font-size: 0.76rem;
+  border-radius: 10px;
+  min-height: 30px;
+}
+
+.outfit-section-block {
+  margin-bottom: 10px;
+}
+
+.outfit-section-block:last-of-type {
+  margin-bottom: 20px !important;
+}
+
+.outfit-section-head {
+  margin-bottom: 6px;
+}
+
+.outfit-section-label {
+  font-size: 0.92rem;
+}
+
+.outfit-local-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 6px;
+  justify-content: flex-start;
+}
+
+.outfit-mini-select {
+  min-width: 108px;
+  height: 30px;
+  font-size: 0.74rem;
+  padding: 0 26px 0 8px;
+  border-radius: 10px;
+}
+
+.outfit-rondell {
+  min-height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+}
+
+.outfit-center-card {
+  width: 96px;
+  height: 130px;
+  border-radius: 14px;
+}
+
+.outfit-side-card {
+  width: 34px;
+  height: 62px;
+  border-radius: 10px;
+}
+
+.outfit-center-card img,
+.outfit-side-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.outfit-arrow {
+  width: 26px;
+  height: 26px;
+  font-size: 0.78rem;
+}
+
+.outfit-save-row {
+  display: flex !important;
+  justify-content: center !important;
+  margin-top: 18px !important;
+  margin-bottom: 26px !important;
+  position: relative;
+  z-index: 2;
+}
+
+.outfit-save-btn {
+  padding: 9px 12px;
+  font-size: 0.8rem;
+  border-radius: 12px;
 }
 
 .outfits-sidebar .saved-outfits-title {
@@ -1508,62 +1496,62 @@ nav#sideMenu li.home-item:hover svg {
   max-width: 96% !important;
   max-height: 96% !important;
 }
-  .saved-outfit-number {
-    font-size: 0.7rem;
-  }
 
-  .delete-saved-outfit-btn {
-    width: 20px;
-    height: 20px;
-    top: 5px;
-    right: 5px;
-  }
-
-  .modal-card {
-    width: calc(100vw - 14px);
-    max-height: 88vh;
-    padding: 16px 12px;
-    border-radius: 18px;
-  }
-
-  .add-modal-title {
-    font-size: 1.3rem;
-    margin-bottom: 12px;
-  }
-
-  .modal-card label,
-  .field-label {
-    font-size: 0.82rem;
-  }
-
-  .modal-card select,
-  .modal-card input[type="file"] {
-    font-size: 0.8rem;
-  }
-
-  .occasion-checkboxes {
-    gap: 8px;
-    max-width: 100%;
-  }
-
-  .occasion-option {
-    min-width: 126px;
-    padding: 8px 8px;
-  }
-
-  .occasion-option span {
-    font-size: 0.82rem;
-  }
-
-  .add-modal-actions {
-    gap: 8px;
-    margin-top: 16px;
-  }
-
-  .btn-primary,
-  .btn-secondary {
-    min-width: 112px;
-    font-size: 0.8rem;
-    padding: 9px 10px;
-  }
+.saved-outfit-number {
+  font-size: 0.7rem;
 }
+
+.delete-saved-outfit-btn {
+  width: 20px;
+  height: 20px;
+  top: 5px;
+  right: 5px;
+}
+
+.modal-card {
+  width: calc(100vw - 14px);
+  max-height: 88vh;
+  padding: 16px 12px;
+  border-radius: 18px;
+}
+
+.add-modal-title {
+  font-size: 1.3rem;
+  margin-bottom: 12px;
+}
+
+.modal-card label,
+.field-label {
+  font-size: 0.82rem;
+}
+
+.modal-card select,
+.modal-card input[type="file"] {
+  font-size: 0.8rem;
+}
+
+.occasion-checkboxes {
+  gap: 8px;
+  max-width: 100%;
+}
+
+.occasion-option {
+  min-width: 126px;
+  padding: 8px 8px;
+}
+
+.occasion-option span {
+  font-size: 0.82rem;
+}
+
+.add-modal-actions {
+  gap: 8px;
+  margin-top: 16px;
+}
+
+.btn-primary,
+.btn-secondary {
+  min-width: 112px;
+  font-size: 0.8rem;
+  padding: 9px 10px;
+}}
