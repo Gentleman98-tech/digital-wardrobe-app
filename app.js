@@ -816,7 +816,7 @@ function initOutfitsSidebarToggle() {
     }
   }, { passive: true });
 
-  // ===== Swipe auf der Sidebar: nach rechts = schließen =====
+  // ===== Swipe auf er Sidebar: nach rechts = schließen =====
   let sidebarStartX = 0;
   let sidebarStartY = 0;
 
