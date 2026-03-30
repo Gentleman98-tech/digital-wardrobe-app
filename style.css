@@ -1299,32 +1299,32 @@ nav#sideMenu li.home-item:hover svg {
   }
 
 .outfits-sidebar-toggle {
-  position: fixed;
-  top: calc(env(safe-area-inset-top) + 90px);
-  right: 0;
-  width: 22px;
-  height: calc(100dvh - env(safe-area-inset-top) - 140px);
-  min-height: 280px;
-  z-index: 10000;
+  position: fixed !important;
+  top: calc(env(safe-area-inset-top) + 90px) !important;
+  right: 0 !important;
+  width: 20px !important;
+  height: calc(100dvh - env(safe-area-inset-top) - 140px) !important;
+  min-height: 260px !important;
+  z-index: 10001 !important;
 
-  border: 1px solid rgba(0,0,0,0.10);
-  border-right: none;
-  border-radius: 14px 0 0 14px;
-  background: rgba(230, 211, 163, 0.92);
-  color: #111;
+  border: 1px solid rgba(0,0,0,0.10) !important;
+  border-right: none !important;
+  border-radius: 14px 0 0 14px !important;
+  background: rgba(230, 211, 163, 0.92) !important;
+  color: #111 !important;
 
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
 
-  font-size: 1.05rem;
-  font-weight: 700;
-  cursor: pointer;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+  font-size: 1rem !important;
+  font-weight: 700 !important;
+  cursor: pointer !important;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.08) !important;
 }
 
 .outfits-sidebar-toggle.open {
-  right: min(60vw, 240px);
+  right: min(60vw, 240px) !important;
 }
   .outfits-sidebar {
     position: fixed !important;
