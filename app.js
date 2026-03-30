@@ -770,17 +770,19 @@ function initOutfitsSidebarToggle() {
 
   if (!toggleBtn || !sidebar || !backdrop) return;
 
-  const closeSidebar = () => {
-    sidebar.classList.remove("open");
-    backdrop.classList.remove("open");
-    toggleBtn.textContent = "❯";
-  };
+const closeSidebar = () => {
+  sidebar.classList.remove("open");
+  backdrop.classList.remove("open");
+  toggleBtn.classList.remove("open"); 
+  toggleBtn.textContent = "❯";
+};
 
-  const openSidebar = () => {
-    sidebar.classList.add("open");
-    backdrop.classList.add("open");
-    toggleBtn.textContent = "❮";
-  };
+const openSidebar = () => {
+  sidebar.classList.add("open");
+  backdrop.classList.add("open");
+  toggleBtn.classList.add("open");   
+  toggleBtn.textContent = "❮";
+};
 
   toggleBtn.addEventListener("click", () => {
     const isOpen = sidebar.classList.contains("open");
