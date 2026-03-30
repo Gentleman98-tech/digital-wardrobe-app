@@ -1325,7 +1325,7 @@ nav#sideMenu li.home-item:hover svg {
 
 .outfits-sidebar-toggle.open {
   right: min(60vw, 240px) !important;
-  transform: translateX(8px) !important;
+  transform: translateX(14px) !important;
 }
   .outfits-sidebar {
     position: fixed !important;
@@ -1471,7 +1471,7 @@ nav#sideMenu li.home-item:hover svg {
   background: linear-gradient(180deg, #e6dcc3, #d8c8a0);
   border-left: 1px solid rgba(0,0,0,0.10);
   border-radius: 18px 0 0 18px;
-  padding: calc(env(safe-area-inset-top) + 56px) 10px 18px !important;
+  padding: calc(env(safe-area-inset-top) + 56px) 10px 34px !important;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
 }
@@ -1484,12 +1484,14 @@ nav#sideMenu li.home-item:hover svg {
 
 .outfits-sidebar .saved-outfits-list {
   width: calc(100% - 44px) !important;
-  margin: 0 0 0 28px !important;
+  margin: 0 0 20px 28px !important;
   display: grid !important;
   grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
   gap: 12px !important;
   align-content: start !important;
   justify-content: start !important;
+  padding-bottom: 28px !important;
+  box-sizing: border-box !important;
 }
 
 .outfits-sidebar .saved-outfit-card {
