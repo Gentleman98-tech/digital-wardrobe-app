@@ -1325,7 +1325,7 @@ nav#sideMenu li.home-item:hover svg {
 
 .outfits-sidebar-toggle.open {
   right: min(60vw, 240px) !important;
-  transform: translateX(14px) !important;
+  transform: translateX(6px) !important;
 }
   .outfits-sidebar {
     position: fixed !important;
