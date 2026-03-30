@@ -678,7 +678,7 @@ function renderOutfits() {
 
 
   initOutfitRondells();
- initOutfitTopFilters();
+  // initOutfitTopFilters();
   initLocalOutfitFilters();
   initSaveOutfitButton();
   renderSavedOutfits();
