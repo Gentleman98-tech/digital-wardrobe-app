@@ -1454,23 +1454,31 @@ nav#sideMenu li.home-item:hover svg {
     margin-bottom: 8px;
   }
 
-  .saved-outfits-list {
-    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
-    gap: 10px !important;
-    max-height: none !important;
-    overflow-y: visible !important;
-  }
+.saved-outfits-list {
+  width: 86%;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  gap: 12px !important;
+  max-height: none !important;
+  overflow-y: visible !important;
+}
 
-  .saved-outfit-card {
-    min-height: 132px;
-    padding: 8px 6px 6px;
-    border-radius: 12px;
-  }
+.saved-outfit-card {
+  min-height: 168px;
+  padding: 10px 8px 8px;
+  border-radius: 14px;
+}
 
-  .saved-outfit-slot {
-    height: 36px;
-    border-radius: 8px;
-  }
+.saved-outfit-slot {
+  height: 50px;
+  border-radius: 10px;
+}
+
+.saved-outfit-img {
+  max-width: 88%;
+  max-height: 88%;
+}
 
   .saved-outfit-number {
     font-size: 0.7rem;
