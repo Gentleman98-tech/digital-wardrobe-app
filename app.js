@@ -675,9 +675,10 @@ function renderOutfits() {
       </div>
     </div>
   `;
+console.log("Outfits gestartet");
 
   initOutfitRondells();
- // initOutfitTopFilters();
+ initOutfitTopFilters();
   initLocalOutfitFilters();
   initSaveOutfitButton();
   renderSavedOutfits();
