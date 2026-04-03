@@ -207,22 +207,42 @@ nav#sideMenu li.home-item:hover svg {
 }
 
 /* Topbar: Titel + Add Button */
-.closet-topbar {
+/* Topbar: Titel + Add Button */
+.closet-topbar{
+  display: flex;
+  align-items: center;
+  justify-content: center;
   position: relative;
+  margin-bottom: 10px;
 }
 
 .closet-title {
+  margin: 0 0 14px;
   text-align: center;
+  color: #111;
+  font-size: 2.6rem;
+  font-weight: 800;
 }
 
-.add-btn {
+/* Add Button */
+.add-btn{
   position: absolute;
+  right: 14px;
+  top: 2px;
+  padding: 12px 16px;
+  border-radius: 14px;
+  border: 1px solid rgba(0,0,0,0.10);
+  background: var(--gold-dark);
+  color: #111;
+  font-weight: 900;
+  font-size: 1rem;
+  cursor: pointer;
+  box-shadow: 0 6px 14px rgba(0,0,0,0.06);
 }
 
 .add-btn:hover {
   filter: brightness(1.05);
 }
-
 /* =========================
    FILTER STRIP + BUTTONS
 ========================= */
