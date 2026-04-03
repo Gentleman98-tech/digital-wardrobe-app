@@ -1645,7 +1645,11 @@ async function loadItems() {
     occasions: item.occasions || [],
     img: item.image_url || "images/closet.jpeg"
   }));
+
+  
 }
+
+
 // ====== INIT ======
 async function initApp() {
   await loadItems();
@@ -1654,3 +1658,4 @@ async function initApp() {
 }
 
 initApp();
+
