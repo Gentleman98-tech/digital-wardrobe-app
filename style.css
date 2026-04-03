@@ -657,10 +657,9 @@ nav#sideMenu li.home-item:hover svg {
 }
 
 .outfit-top-filter.active {
-  background: var(--ui-accent);
-  border-color: var(--ui-accent);
-  color: #fff;
-  box-shadow: 0 10px 20px var(--ui-accent-shadow);
+  background: red !important;
+  color: white !important;
+  border-color: red !important;
 }
 .outfit-section-block {
   margin-top: 16px;
