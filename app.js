@@ -838,7 +838,11 @@ function initOutfitsSidebarToggle() {
   }, { passive: true });
 }
 function initOutfitTopFilters() {
+   console.log("Top filters init läuft");
+
   const buttons = document.querySelectorAll(".outfit-top-filter");
+  console.log("Gefundene Buttons:", buttons.length);
+
 
   buttons.forEach(btn => {
     btn.addEventListener("click", () => {
@@ -855,7 +859,8 @@ function initOutfitTopFilters() {
       btn.classList.add("active");
       currentOutfitFilter = value;
 
-      rerenderAllRondells();
+      console.log("active gesetzt auf:", value);
+rerenderAllRondells();
     });
   });
 }
