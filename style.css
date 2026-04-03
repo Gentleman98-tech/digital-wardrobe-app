@@ -1044,7 +1044,7 @@ nav#sideMenu li.home-item:hover svg {
 
 .outfit-arrow.right {
   margin-left: 8px;
-  z-index: 4;
+  z-index: 3;
 }
 
 .outfit-save-row {
