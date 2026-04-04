@@ -1085,7 +1085,7 @@ function initOutfitsSidebarToggle() {
 
   backdrop.addEventListener("click", closeSidebar);
 }
-}
+
 function initOutfitTopFilters() {
    console.log("Top filters init läuft");
 
