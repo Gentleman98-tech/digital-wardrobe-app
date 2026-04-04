@@ -641,25 +641,42 @@ nav#sideMenu li.home-item:hover svg {
 
 .outfit-top-filter {
   padding: 10px 18px;
-  border-radius: 14px;
-  border: 1px solid rgba(91, 102, 115, 0.14);
-  background: rgba(123, 135, 148, 0.16);
-  color: var(--ui-neutral-dark);
+  border-radius: 15px;
+  border: 1px solid rgba(102, 116, 133, 0.18);
+  background: linear-gradient(
+    180deg,
+    rgba(125, 140, 158, 0.22) 0%,
+    rgba(104, 118, 136, 0.18) 100%
+  );
+  color: #5f6c7b;
   font-size: 0.95rem;
   font-weight: 700;
   cursor: pointer;
   transition: all 0.2s ease;
-  box-shadow: 0 2px 8px rgba(31,41,55,0.03);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.38),
+    0 3px 8px rgba(31,41,55,0.04);
 }
 .outfit-top-filter:hover {
-  background: rgba(123, 135, 148, 0.22);
+  background: linear-gradient(
+    180deg,
+    rgba(125, 140, 158, 0.28) 0%,
+    rgba(104, 118, 136, 0.22) 100%
+  );
   transform: translateY(-1px);
 }
-
 .outfit-top-filter.active {
-  background: red !important;
-  color: white !important;
-  border-color: red !important;
+  background: linear-gradient(
+    180deg,
+    #33cbe2 0%,
+    #22bdd8 38%,
+    #14aecb 100%
+  );
+  border-color: rgba(20, 174, 203, 0.55);
+  color: #ffffff;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.30),
+    0 10px 22px rgba(20, 174, 203, 0.24);
 }
 .outfit-section-block {
   margin-top: 16px;
@@ -1055,26 +1072,38 @@ nav#sideMenu li.home-item:hover svg {
 
 .outfit-save-btn {
   padding: 13px 24px;
-  border-radius: 16px;
-  border: 1px solid var(--ui-accent);
-  background: var(--ui-accent);
-  color: #fff;
+  border-radius: 17px;
+  border: 1px solid rgba(20, 174, 203, 0.48);
+  background: linear-gradient(
+    180deg,
+    #34cce3 0%,
+    #22bdd8 42%,
+    #16afcd 100%
+  );
+  color: #ffffff;
   font-size: 0.98rem;
   font-weight: 700;
   cursor: pointer;
   transition: all 0.18s ease;
-  box-shadow: 0 12px 24px var(--ui-accent-shadow);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.28),
+    0 12px 24px rgba(20, 174, 203, 0.24);
 }
 
 .outfit-save-btn:hover {
   transform: translateY(-2px);
-  box-shadow: 0 16px 28px var(--ui-accent-shadow);
-  filter: brightness(1.03);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.30),
+    0 16px 28px rgba(20, 174, 203, 0.28);
+  filter: brightness(1.02);
 }
 
 .outfit-save-btn:active {
   transform: translateY(0);
   filter: brightness(0.98);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.22),
+    0 8px 16px rgba(20, 174, 203, 0.20);
 }
 
 /* =========================
@@ -1461,7 +1490,9 @@ nav#sideMenu li.home-item:hover svg {
 }
 
 .outfit-section-head {
-  margin-bottom: 6px;
+  margin: 0 24px 14px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgba(91, 102, 115, 0.16);
 }
 
 .outfit-section-label {
