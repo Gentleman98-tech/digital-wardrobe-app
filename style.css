@@ -871,7 +871,7 @@ nav#sideMenu li.home-item:hover svg {
 }
 
 .outfits-left {
-  min-width: 0;
+  max-width: 900px; /* 🔥 steuert wie weit rechts das Rondell sitzt */
 }
 
 .outfit-try-center {
@@ -1110,13 +1110,13 @@ nav#sideMenu li.home-item:hover svg {
 ========================= */
 .outfit-rondell {
   display: flex;
+  justify-content: center; /* 🔥 zentriert sauber */
   align-items: center;
-  justify-content: flex-start; /* vorher center */
   gap: 14px;
   min-height: 170px;
   position: relative;
-  margin-top: 6px; /* enger an Dropdown */
-  margin-left: 60px; /* optisch aligned mit Dropdown */
+
+  margin-top: 10px;
 }
 
 .empty-rondell {
