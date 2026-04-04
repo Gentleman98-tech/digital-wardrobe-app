@@ -576,7 +576,6 @@ function renderOutfits() {
             <button class="outfit-top-filter">Business</button>
             <button class="outfit-top-filter">Business Casual</button>
             <button class="outfit-top-filter">Freizeit</button>
-            <button class="outfit-top-filter">Asi</button>
           </div>
 
           <div class="outfit-section-block">
@@ -679,7 +678,7 @@ function renderOutfits() {
 
 
   initOutfitRondells();
-  // initOutfitTopFilters();
+  initOutfitTopFilters();
   initLocalOutfitFilters();
   initSaveOutfitButton();
   renderSavedOutfits();
