@@ -784,6 +784,12 @@ document.querySelectorAll(".delete-saved-outfit-btn").forEach(btn => {
 });
 }
 
+
+function buildSimpleOptions(items) {
+  if (!Array.isArray(items)) return "";
+  return items.map(item => `<option value="${item}">${item}</option>`).join("");
+}
+
 function renderOutfits() {
   content.innerHTML = `
     <div class="closet-panel outfits-panel">
