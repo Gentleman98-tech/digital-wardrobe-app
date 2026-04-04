@@ -630,6 +630,32 @@ nav#sideMenu li.home-item:hover svg {
     inset 0 1px 0 rgba(255,255,255,0.55);
 }
 
+
+.try-btn {
+  padding: 18px 26px;
+  border-radius: 18px;
+  border: 1px solid rgba(20, 174, 203, 0.48);
+  background: linear-gradient(
+    180deg,
+    #34cce3 0%,
+    #22bdd8 42%,
+    #16afcd 100%
+  );
+  color: #fff;
+  font-size: 1.08rem;
+  font-weight: 700;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.28),
+    0 12px 24px rgba(20, 174, 203, 0.24);
+}
+
+.try-icon {
+  font-size: 1.15rem;
+}
 .outfit-global-filters {
   display: flex;
   flex-wrap: wrap;
@@ -745,8 +771,9 @@ nav#sideMenu li.home-item:hover svg {
 
 .outfits-layout {
   display: grid;
-  grid-template-columns: 1fr 500px;
-  gap: 40px;
+  grid-template-columns: minmax(860px, 1fr) 160px 420px;
+  gap: 34px;
+  align-items: start;
   height: 100%;
 }
 
@@ -755,6 +782,26 @@ nav#sideMenu li.home-item:hover svg {
   width: 100%;
   height: 100%;
   padding-right: 0;
+}
+
+.outfits-left {
+  min-width: 0;
+}
+
+.outfit-try-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100%;
+}
+
+.outfit-try-panel {
+  min-height: 100%;
+  border-radius: 26px;
+  background: rgba(255,255,255,0.36);
+  border: 1px solid rgba(255,255,255,0.28);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
 }
 
 .outfits-sidebar {

@@ -589,117 +589,121 @@ function buildSimpleOptions(items) {
 function renderOutfits() {
   content.innerHTML = `
     <div class="closet-panel outfits-panel">
-      <button class="outfits-sidebar-toggle" id="outfitsSidebarToggle">❯</button>
-      <div class="outfits-sidebar-backdrop" id="outfitsSidebarBackdrop"></div>
-
       <div class="outfits-layout">
 
-        <div class="outfits-main">
-          <div class="closet-topbar">
-            <h1 class="closet-title">Outfits</h1>
-  <button class="sidebar-open-btn" id="openSidebarBtn">»</button>
-</div>
-
-        
-
-          <div class="outfit-global-filters">
-            <button class="outfit-top-filter">Business</button>
-            <button class="outfit-top-filter">Business Casual</button>
-            <button class="outfit-top-filter">Freizeit</button>
-          </div>
-
-          <div class="outfit-section-block">
-            <div class="outfit-section-head">
-              <div class="outfit-section-label">Oberteile</div>
+        <div class="outfits-left">
+          <div class="outfits-main">
+            <div class="closet-topbar">
+              <h1 class="closet-title">Outfits</h1>
             </div>
 
-            <div class="outfit-local-filters">
-            <select class="outfit-mini-select" id="topTypeFilter">
-  <option value="">Alle</option>
-  ${buildSimpleOptions(outfitFilterOptions.top)}
-</select>
-
-              <select class="outfit-mini-select" id="topColorFilter">
-  ${buildColorOptions()}
-</select>
+            <div class="outfit-global-filters">
+              <button class="outfit-top-filter">Business</button>
+              <button class="outfit-top-filter">Business Casual</button>
+              <button class="outfit-top-filter">Freizeit</button>
             </div>
 
-            <div class="outfit-rondell">
-              <div class="outfit-side-card left" id="topLeft"></div>
-              <button class="outfit-arrow left" id="topPrev">◀</button>
-              <div class="outfit-center-card" id="topCenter"></div>
-              <button class="outfit-arrow right" id="topNext">▶</button>
-              <div class="outfit-side-card right" id="topRight"></div>
-            </div>
-          </div>
+            <div class="outfit-section-block">
+              <div class="outfit-section-head">
+                <div class="outfit-section-label">Oberteile</div>
+              </div>
 
-          <div class="outfit-section-block">
-            <div class="outfit-section-head">
-              <div class="outfit-section-label">Hosen</div>
-            </div>
+              <div class="outfit-local-filters">
+                <select class="outfit-mini-select" id="topTypeFilter">
+                  <option value="">Alle</option>
+                  ${buildSimpleOptions(outfitFilterOptions.top)}
+                </select>
 
-            <div class="outfit-local-filters">
-              <select class="outfit-mini-select" id="bottomTypeFilter">
-  <option value="">Alle</option>
-  <option value="Jeans">Jeans</option>
-  <option value="Chinos">Chinos</option>
-  <option value="Jogger">Jogger</option>
-  <option value="Shorts">Shorts</option>
-  <option value="Sporthose">Sporthose</option>
-  <option value="Anzughose">Anzughose</option>
-</select>
+                <select class="outfit-mini-select" id="topColorFilter">
+                  ${buildColorOptions()}
+                </select>
+              </div>
 
-              <select class="outfit-mini-select" id="bottomColorFilter">
-  ${buildColorOptions()}
-</select>
+              <div class="outfit-rondell">
+                <div class="outfit-side-card left" id="topLeft"></div>
+                <button class="outfit-arrow left" id="topPrev">◀</button>
+                <div class="outfit-center-card" id="topCenter"></div>
+                <button class="outfit-arrow right" id="topNext">▶</button>
+                <div class="outfit-side-card right" id="topRight"></div>
+              </div>
             </div>
 
-            <div class="outfit-rondell">
-              <div class="outfit-side-card left" id="bottomLeft"></div>
-              <button class="outfit-arrow left" id="bottomPrev">◀</button>
-              <div class="outfit-center-card" id="bottomCenter"></div>
-              <button class="outfit-arrow right" id="bottomNext">▶</button>
-              <div class="outfit-side-card right" id="bottomRight"></div>
+            <div class="outfit-section-block">
+              <div class="outfit-section-head">
+                <div class="outfit-section-label">Hosen</div>
+              </div>
+
+              <div class="outfit-local-filters">
+                <select class="outfit-mini-select" id="bottomTypeFilter">
+                  <option value="">Alle</option>
+                  <option value="Jeans">Jeans</option>
+                  <option value="Chinos">Chinos</option>
+                  <option value="Jogger">Jogger</option>
+                  <option value="Shorts">Shorts</option>
+                  <option value="Sporthose">Sporthose</option>
+                  <option value="Anzughose">Anzughose</option>
+                </select>
+
+                <select class="outfit-mini-select" id="bottomColorFilter">
+                  ${buildColorOptions()}
+                </select>
+              </div>
+
+              <div class="outfit-rondell">
+                <div class="outfit-side-card left" id="bottomLeft"></div>
+                <button class="outfit-arrow left" id="bottomPrev">◀</button>
+                <div class="outfit-center-card" id="bottomCenter"></div>
+                <button class="outfit-arrow right" id="bottomNext">▶</button>
+                <div class="outfit-side-card right" id="bottomRight"></div>
+              </div>
             </div>
-          </div>
 
-          <div class="outfit-section-block">
-            <div class="outfit-section-head">
-              <div class="outfit-section-label">Schuhe</div>
+            <div class="outfit-section-block">
+              <div class="outfit-section-head">
+                <div class="outfit-section-label">Schuhe</div>
+              </div>
+
+              <div class="outfit-local-filters">
+                <select class="outfit-mini-select" id="shoeTypeFilter">
+                  <option value="">Alle</option>
+                  ${buildSimpleOptions(outfitFilterOptions.shoes)}
+                </select>
+
+                <select class="outfit-mini-select" id="shoeColorFilter">
+                  ${buildColorOptions()}
+                </select>
+              </div>
+
+              <div class="outfit-rondell">
+                <div class="outfit-side-card left" id="shoeLeft"></div>
+                <button class="outfit-arrow left" id="shoePrev">◀</button>
+                <div class="outfit-center-card" id="shoeCenter"></div>
+                <button class="outfit-arrow right" id="shoeNext">▶</button>
+                <div class="outfit-side-card right" id="shoeRight"></div>
+              </div>
             </div>
 
-            <div class="outfit-local-filters">
-              <select class="outfit-mini-select" id="shoeTypeFilter">
-  <option value="">Alle</option>
-  ${buildSimpleOptions(outfitFilterOptions.shoes)}
-</select>
-
-              <select class="outfit-mini-select" id="shoeColorFilter">
-  ${buildColorOptions()}
-</select>
+            <div class="outfit-save-row">
+              <button class="outfit-save-btn" id="saveOutfitBtn">
+                💾 Outfit speichern
+              </button>
             </div>
-
-            <div class="outfit-rondell">
-              <div class="outfit-side-card left" id="shoeLeft"></div>
-              <button class="outfit-arrow left" id="shoePrev">◀</button>
-              <div class="outfit-center-card" id="shoeCenter"></div>
-              <button class="outfit-arrow right" id="shoeNext">▶</button>
-              <div class="outfit-side-card right" id="shoeRight"></div>
-            </div>
-          </div>
-
-          <div class="outfit-save-row">
-            <button class="outfit-save-btn" id="saveOutfitBtn">
-              💾 Outfit speichern
-            </button>
           </div>
         </div>
 
-        <div class="outfits-sidebar">
-        <button class="sidebar-close-btn" id="closeSidebarBtn">«</button>
-          <div class="saved-outfits-title">Gespeicherte Outfits</div>
-          <div id="savedOutfitsList" class="saved-outfits-list">
-            <div class="saved-outfit-placeholder">Noch keine Outfits gespeichert</div>
+        <div class="outfit-try-center">
+          <button class="try-btn" id="tryOnBtn">
+            <span class="try-icon">👔</span>
+            Anprobieren
+          </button>
+        </div>
+
+        <div class="outfit-try-panel">
+          <div class="try-panel-inner">
+            <div class="try-panel-title">Virtuell anprobieren</div>
+            <div class="try-panel-placeholder">
+              Hier erscheint im nächsten Schritt deine virtuelle Anprobe.
+            </div>
           </div>
         </div>
 
@@ -707,14 +711,10 @@ function renderOutfits() {
     </div>
   `;
 
-
   initOutfitRondells();
   initOutfitTopFilters();
   initLocalOutfitFilters();
   initSaveOutfitButton();
-  renderSavedOutfits();
-  initOutfitsSidebarToggle();
-  initDesktopSidebarToggle();
 }
 
 
