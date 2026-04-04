@@ -695,6 +695,7 @@ function initDesktopSidebarToggle() {
   const closeBtn = document.getElementById("closeSidebarBtn");
   const sidebar = document.querySelector(".outfits-sidebar");
 
+  console.log("desktop toggle init", { openBtn, closeBtn, sidebar });
   if (!openBtn || !closeBtn || !sidebar) return;
 
   sidebar.classList.add("closed");
