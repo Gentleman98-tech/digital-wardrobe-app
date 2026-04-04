@@ -573,7 +573,7 @@ function renderOutfits() {
           </div>
 
           <div class="outfit-global-filters">
-            <button class="outfit-top-filter">Business</button>
+            <button class="outfit-top-filter active">Business</button>
             <button class="outfit-top-filter">Business Casual</button>
             <button class="outfit-top-filter">Freizeit</button>
           </div>
