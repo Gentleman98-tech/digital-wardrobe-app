@@ -1228,38 +1228,44 @@ function initTryOnButton() {
   const tryBtn = document.getElementById("tryOnBtn");
   if (!tryBtn) return;
 
-  tryBtn.addEventListener("click", () => {
-    if (tryBtn.classList.contains("is-loading")) return;
+  const fill = tryBtn.querySelector(".try-btn-fill");
+  if (!fill) return;
 
-    tryBtn.classList.remove("is-done");
-    void tryBtn.offsetWidth; // Reflow für sauberen Neustart
+  tryBtn.addEventListener("click", () => {
+    // 1. Alles sauber zurücksetzen
+    tryBtn.classList.remove("is-loading", "is-done");
+
+    fill.style.transition = "none";
+    fill.style.width = "0%";
+
+    // 2. Reflow erzwingen, damit der Browser den Reset wirklich übernimmt
+    void fill.offsetWidth;
+
+    // 3. Transition wieder aktivieren
+    fill.style.transition = "width 2.2s linear";
+
+    // 4. Animation neu starten
     tryBtn.classList.add("is-loading");
 
+    // Fill manuell auf 100%
+    requestAnimationFrame(() => {
+      fill.style.width = "100%";
+    });
+
+    // 5. Nach Ende wieder auf grau zurück
     setTimeout(() => {
-  tryBtn.classList.remove("is-loading");
+      tryBtn.classList.remove("is-loading");
+      tryBtn.classList.add("is-done");
 
-  // kurzer Moment "fertig" anzeigen (optional)
-  tryBtn.classList.add("is-done");
+      setTimeout(() => {
+        tryBtn.classList.remove("is-done");
 
-  setTimeout(() => {
-    // zurücksetzen auf grau
-    tryBtn.classList.remove("is-done");
-
-    // wichtig: Fill wieder auf 0 setzen
-    const fill = tryBtn.querySelector(".try-btn-fill");
-    if (fill) {
-      fill.style.transition = "none";
-      fill.style.width = "0%";
-
-      // Reflow → damit Animation beim nächsten Klick wieder sauber läuft
-      void fill.offsetWidth;
-
-      fill.style.transition = "";
-    }
-
-  }, 400); // wie lange er kurz "fertig" bleibt
-
-}, 2200);
+        fill.style.transition = "none";
+        fill.style.width = "0%";
+        void fill.offsetWidth;
+        fill.style.transition = "width 2.2s linear";
+      }, 250);
+    }, 2200);
   });
 }
 // ====== CLOSET ======

@@ -731,8 +731,9 @@ nav#sideMenu li.home-item:hover svg {
   pointer-events: none;
 }
 
-.try-btn.is-loading .try-btn-fill {
-  width: 100%;
+.try-btn.is-loading {
+  color: #ffffff;
+  cursor: default;
 }
 
 .try-btn.is-done {
@@ -740,9 +741,12 @@ nav#sideMenu li.home-item:hover svg {
   border-color: rgba(20, 174, 203, 0.48);
 }
 
-.try-btn.is-done .try-btn-fill {
-  width: 100%;
+.try-btn.is-done {
+  color: #ffffff;
+  border-color: rgba(20, 174, 203, 0.48);
 }
+
+
 .outfit-global-filters {
   display: flex;
   flex-wrap: wrap;
