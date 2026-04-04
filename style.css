@@ -309,8 +309,9 @@ nav#sideMenu li.home-item:hover svg {
 ========================= */
 .thin-divider {
   height: 1px;
+  width: 55%; /* nur halbe Breite */
   background: rgba(0,0,0,0.12);
-  margin: 16px 6px 14px;
+  margin: 16px 24px 14px; /* aligned mit content */
 }
 
 .section-title {
@@ -813,7 +814,7 @@ nav#sideMenu li.home-item:hover svg {
 .outfit-local-filters {
   display: flex;
   gap: 8px;
-  margin: 0 24px 6px;
+  margin: 0 24px 2px; /* weniger Abstand */
 }
 
 .outfit-mini-select {
@@ -1110,10 +1111,12 @@ nav#sideMenu li.home-item:hover svg {
 .outfit-rondell {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start; /* vorher center */
   gap: 14px;
   min-height: 170px;
   position: relative;
+  margin-top: 6px; /* enger an Dropdown */
+  margin-left: 24px; /* optisch aligned mit Dropdown */
 }
 
 .empty-rondell {
