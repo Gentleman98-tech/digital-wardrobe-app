@@ -559,136 +559,7 @@ function renderHome() {
     </div>
   `;
 }
-function renderOutfits() {
-  content.innerHTML = `
-    <div class="closet-panel outfits-panel">
-      <button class="outfits-sidebar-toggle" id="outfitsSidebarToggle">❯</button>
-      <div class="outfits-sidebar-backdrop" id="outfitsSidebarBackdrop"></div>
 
-      <div class="outfits-layout">
-
-        <div class="outfits-main">
-          <div class="closet-topbar">
-            <h1 class="closet-title">Outfits</h1>
-  <button class="sidebar-open-btn" id="openSidebarBtn">»</button>
-</div>
-
-        
-
-          <div class="outfit-global-filters">
-            <button class="outfit-top-filter">Business</button>
-            <button class="outfit-top-filter">Business Casual</button>
-            <button class="outfit-top-filter">Freizeit</button>
-          </div>
-
-          <div class="outfit-section-block">
-            <div class="outfit-section-head">
-              <div class="outfit-section-label">Oberteile</div>
-            </div>
-
-            <div class="outfit-local-filters">
-            <select class="outfit-mini-select" id="topTypeFilter">
-  <option value="">Alle</option>
-  ${buildSimpleOptions(outfitFilterOptions.top)}
-</select>
-
-              <select class="outfit-mini-select" id="topColorFilter">
-  ${buildColorOptions()}
-</select>
-            </div>
-
-            <div class="outfit-rondell">
-              <div class="outfit-side-card left" id="topLeft"></div>
-              <button class="outfit-arrow left" id="topPrev">◀</button>
-              <div class="outfit-center-card" id="topCenter"></div>
-              <button class="outfit-arrow right" id="topNext">▶</button>
-              <div class="outfit-side-card right" id="topRight"></div>
-            </div>
-          </div>
-
-          <div class="outfit-section-block">
-            <div class="outfit-section-head">
-              <div class="outfit-section-label">Hosen</div>
-            </div>
-
-            <div class="outfit-local-filters">
-              <select class="outfit-mini-select" id="bottomTypeFilter">
-  <option value="">Alle</option>
-  <option value="Jeans">Jeans</option>
-  <option value="Chinos">Chinos</option>
-  <option value="Jogger">Jogger</option>
-  <option value="Shorts">Shorts</option>
-  <option value="Sporthose">Sporthose</option>
-  <option value="Anzughose">Anzughose</option>
-</select>
-
-              <select class="outfit-mini-select" id="bottomColorFilter">
-  ${buildColorOptions()}
-</select>
-            </div>
-
-            <div class="outfit-rondell">
-              <div class="outfit-side-card left" id="bottomLeft"></div>
-              <button class="outfit-arrow left" id="bottomPrev">◀</button>
-              <div class="outfit-center-card" id="bottomCenter"></div>
-              <button class="outfit-arrow right" id="bottomNext">▶</button>
-              <div class="outfit-side-card right" id="bottomRight"></div>
-            </div>
-          </div>
-
-          <div class="outfit-section-block">
-            <div class="outfit-section-head">
-              <div class="outfit-section-label">Schuhe</div>
-            </div>
-
-            <div class="outfit-local-filters">
-              <select class="outfit-mini-select" id="shoeTypeFilter">
-  <option value="">Alle</option>
-  ${buildSimpleOptions(outfitFilterOptions.shoes)}
-</select>
-
-              <select class="outfit-mini-select" id="shoeColorFilter">
-  ${buildColorOptions()}
-</select>
-            </div>
-
-            <div class="outfit-rondell">
-              <div class="outfit-side-card left" id="shoeLeft"></div>
-              <button class="outfit-arrow left" id="shoePrev">◀</button>
-              <div class="outfit-center-card" id="shoeCenter"></div>
-              <button class="outfit-arrow right" id="shoeNext">▶</button>
-              <div class="outfit-side-card right" id="shoeRight"></div>
-            </div>
-          </div>
-
-          <div class="outfit-save-row">
-            <button class="outfit-save-btn" id="saveOutfitBtn">
-              💾 Outfit speichern
-            </button>
-          </div>
-        </div>
-
-        <div class="outfits-sidebar">
-        <button class="sidebar-close-btn" id="closeSidebarBtn">«</button>
-          <div class="saved-outfits-title">Gespeicherte Outfits</div>
-          <div id="savedOutfitsList" class="saved-outfits-list">
-            <div class="saved-outfit-placeholder">Noch keine Outfits gespeichert</div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  `;
-
-
-  initOutfitRondells();
-  initOutfitTopFilters();
-  initLocalOutfitFilters();
-  initSaveOutfitButton();
-  renderSavedOutfits();
-  initOutfitsSidebarToggle();
-  initDesktopSidebarToggle();
-}
 
 function initDesktopSidebarToggle() {
   const openBtn = document.getElementById("openSidebarBtn");
@@ -707,81 +578,6 @@ function initDesktopSidebarToggle() {
   closeBtn.addEventListener("click", () => {
     sidebar.classList.add("closed");
   });
-}
-
-function renderSavedOutfits() {
-  const list = document.getElementById("savedOutfitsList");
-  if (!list) return;
-
-  if (!savedOutfits.length) {
-    list.innerHTML = `<div class="saved-outfit-placeholder">Noch keine Outfits gespeichert</div>`;
-    return;
-  }
-
-  list.innerHTML = savedOutfits.map(outfit => `
-  <div class="saved-outfit-card" data-id="${outfit.id}">
-    <button class="delete-saved-outfit-btn" data-id="${outfit.id}" aria-label="Outfit löschen">
-      <span class="trash-icon"></span>
-    </button>
-
-    <div class="saved-outfit-slot">
-      <img class="saved-outfit-img" src="${outfit.topImg}" alt="Oberteil">
-    </div>
-
-    <div class="saved-outfit-slot">
-      <img class="saved-outfit-img" src="${outfit.bottomImg}" alt="Hose">
-    </div>
-
-    <div class="saved-outfit-slot">
-      <img class="saved-outfit-img" src="${outfit.shoesImg}" alt="Schuhe">
-    </div>
-
-    <div class="saved-outfit-number">${outfit.number || ""}</div>
-  </div>
-`).join("");
-
-document.querySelectorAll(".delete-saved-outfit-btn").forEach(btn => {
-  btn.addEventListener("click", (e) => {
-    e.stopPropagation();
-
-    const id = btn.getAttribute("data-id");
-    deleteSavedOutfit(id);
-  });
-});
-
-  document.querySelectorAll(".saved-outfit-card").forEach(card => {
-    card.addEventListener("click", (e) => {
-      if (e.target.closest(".delete-outfit-btn")) return;
-
-      const id = card.getAttribute("data-id");
-      const outfit = savedOutfits.find(o => o.id === id);
-      if (!outfit) return;
-
-      outfitState.top = outfitData.top.findIndex(i => i.id === outfit.topId);
-      outfitState.bottom = outfitData.bottom.findIndex(i => i.id === outfit.bottomId);
-      outfitState.shoes = outfitData.shoes.findIndex(i => i.id === outfit.shoesId);
-
-      renderSingleRondell("top", "topLeft", "topCenter", "topRight");
-      renderSingleRondell("bottom", "bottomLeft", "bottomCenter", "bottomRight");
-      renderSingleRondell("shoes", "shoeLeft", "shoeCenter", "shoeRight");
-    });
-  });
-
- document.querySelectorAll(".delete-outfit-btn").forEach(btn => {
-  btn.addEventListener("click", (e) => {
-    e.stopPropagation();
-
-    const id = btn.getAttribute("data-id");
-    savedOutfits = savedOutfits.filter(o => o.id !== id);
-
-    if (savedOutfits.length === 0) {
-      nextOutfitNumber = 1;
-    }
-
-    saveSavedOutfits();
-    renderSavedOutfits();
-  });
-});
 }
 
 
@@ -921,24 +717,6 @@ function renderOutfits() {
   initDesktopSidebarToggle();
 }
 
-function initDesktopSidebarToggle() {
-  const openBtn = document.getElementById("openSidebarBtn");
-  const closeBtn = document.getElementById("closeSidebarBtn");
-  const sidebar = document.querySelector(".outfits-sidebar");
-
-  console.log("desktop toggle init", { openBtn, closeBtn, sidebar });
-  if (!openBtn || !closeBtn || !sidebar) return;
-
-  sidebar.classList.add("closed");
-
-  openBtn.addEventListener("click", () => {
-    sidebar.classList.remove("closed");
-  });
-
-  closeBtn.addEventListener("click", () => {
-    sidebar.classList.add("closed");
-  });
-}
 
 function renderSavedOutfits() {
   const list = document.getElementById("savedOutfitsList");
@@ -1036,8 +814,16 @@ function initOutfitsSidebarToggle() {
     toggleBtn.textContent = "❯";
   };
 
+  toggleBtn.addEventListener("click", () => {
+    if (sidebar.classList.contains("open")) {
+      closeSidebar();
+    } else {
+      openSidebar();
+    }
+  });
 
-  // ===== Swipe auf der Leiste: nach links = öffnen =====
+  backdrop.addEventListener("click", closeSidebar);
+
   let toggleStartX = 0;
   let toggleStartY = 0;
 
@@ -1052,13 +838,11 @@ function initOutfitsSidebarToggle() {
     const diffX = touch.clientX - toggleStartX;
     const diffY = touch.clientY - toggleStartY;
 
-    // nach links wischen auf der Leiste
     if (diffX < -30 && Math.abs(diffY) < 40) {
       openSidebar();
     }
   }, { passive: true });
 
-  // ===== Swipe auf er Sidebar: nach rechts = schließen =====
   let sidebarStartX = 0;
   let sidebarStartY = 0;
 
@@ -1073,15 +857,12 @@ function initOutfitsSidebarToggle() {
     const diffX = touch.clientX - sidebarStartX;
     const diffY = touch.clientY - sidebarStartY;
 
-    // nach rechts wischen auf der Sidebar
     if (diffX > 30 && Math.abs(diffY) < 40) {
       closeSidebar();
     }
   }, { passive: true });
-
-
-  
 }
+
 function initOutfitTopFilters() {
    console.log("Top filters init läuft");
 
