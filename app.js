@@ -1074,18 +1074,8 @@ function initOutfitsSidebarToggle() {
   }, { passive: true });
 
 
-    // ===== CLICK (WICHTIG – DAS FEHLT BEI DIR) =====
-  toggleBtn.addEventListener("click", () => {
-    if (sidebar.classList.contains("open")) {
-      closeSidebar();
-    } else {
-      openSidebar();
-    }
-  });
-
-  backdrop.addEventListener("click", closeSidebar);
+  
 }
-
 function initOutfitTopFilters() {
    console.log("Top filters init läuft");
 
