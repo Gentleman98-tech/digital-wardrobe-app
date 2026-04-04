@@ -1235,14 +1235,31 @@ function initTryOnButton() {
     void tryBtn.offsetWidth; // Reflow für sauberen Neustart
     tryBtn.classList.add("is-loading");
 
-    // Hier später echte Bildgenerierung starten
     setTimeout(() => {
-      tryBtn.classList.remove("is-loading");
-      tryBtn.classList.add("is-done");
+  tryBtn.classList.remove("is-loading");
 
-      // Später hier:
-      // generateTryOnImage();
-    }, 2200);
+  // kurzer Moment "fertig" anzeigen (optional)
+  tryBtn.classList.add("is-done");
+
+  setTimeout(() => {
+    // zurücksetzen auf grau
+    tryBtn.classList.remove("is-done");
+
+    // wichtig: Fill wieder auf 0 setzen
+    const fill = tryBtn.querySelector(".try-btn-fill");
+    if (fill) {
+      fill.style.transition = "none";
+      fill.style.width = "0%";
+
+      // Reflow → damit Animation beim nächsten Klick wieder sauber läuft
+      void fill.offsetWidth;
+
+      fill.style.transition = "";
+    }
+
+  }, 400); // wie lange er kurz "fertig" bleibt
+
+}, 2200);
   });
 }
 // ====== CLOSET ======
