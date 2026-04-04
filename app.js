@@ -570,7 +570,10 @@ function renderOutfits() {
         <div class="outfits-main">
           <div class="closet-topbar">
             <h1 class="closet-title">Outfits</h1>
-          </div>
+  <button class="sidebar-open-btn" id="openSidebarBtn">»</button>
+</div>
+
+        
 
           <div class="outfit-global-filters">
             <button class="outfit-top-filter">Business</button>
@@ -666,6 +669,7 @@ function renderOutfits() {
         </div>
 
         <div class="outfits-sidebar">
+        <button class="sidebar-close-btn" id="closeSidebarBtn">«</button>
           <div class="saved-outfits-title">Gespeicherte Outfits</div>
           <div id="savedOutfitsList" class="saved-outfits-list">
             <div class="saved-outfit-placeholder">Noch keine Outfits gespeichert</div>
@@ -683,6 +687,23 @@ function renderOutfits() {
   initSaveOutfitButton();
   renderSavedOutfits();
   initOutfitsSidebarToggle();
+  initDesktopSidebarToggle();
+}
+
+function initDesktopSidebarToggle() {
+  const openBtn = document.getElementById("openSidebarBtn");
+  const closeBtn = document.getElementById("closeSidebarBtn");
+  const sidebar = document.querySelector(".outfits-sidebar")?.classList.add("closed");
+
+  if (!openBtn || !closeBtn || !sidebar) return;
+
+  openBtn.addEventListener("click", () => {
+    sidebar.classList.remove("closed");
+  });
+
+  closeBtn.addEventListener("click", () => {
+    sidebar.classList.add("closed");
+  });
 }
 function buildSimpleOptions(items) {
   return items.map(item => `<option value="${item}">${item}</option>`).join("");
