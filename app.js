@@ -1008,7 +1008,7 @@ document.querySelectorAll(".delete-saved-outfit-btn").forEach(btn => {
   });
 });
 }
-
+l
 function initOutfitsSidebarToggle() {
   const toggleBtn = document.getElementById("outfitsSidebarToggle");
   const sidebar = document.querySelector(".outfits-sidebar");
