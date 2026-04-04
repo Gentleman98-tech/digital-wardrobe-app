@@ -693,9 +693,11 @@ function renderOutfits() {
 function initDesktopSidebarToggle() {
   const openBtn = document.getElementById("openSidebarBtn");
   const closeBtn = document.getElementById("closeSidebarBtn");
-  const sidebar = document.querySelector(".outfits-sidebar")?.classList.add("closed");
+  const sidebar = document.querySelector(".outfits-sidebar");
 
   if (!openBtn || !closeBtn || !sidebar) return;
+
+  sidebar.classList.add("closed");
 
   openBtn.addEventListener("click", () => {
     sidebar.classList.remove("closed");
@@ -704,9 +706,6 @@ function initDesktopSidebarToggle() {
   closeBtn.addEventListener("click", () => {
     sidebar.classList.add("closed");
   });
-}
-function buildSimpleOptions(items) {
-  return items.map(item => `<option value="${item}">${item}</option>`).join("");
 }
 
 function renderSavedOutfits() {
