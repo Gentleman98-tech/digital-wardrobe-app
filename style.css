@@ -626,6 +626,7 @@ nav#sideMenu li.home-item:hover svg {
   flex-direction: column;
   border: 1px solid rgba(255,255,255,0.35);
   border-radius: 30px;
+  width: min(1850px, calc(100vw - 32px));
   box-shadow:
     0 18px 44px rgba(31, 41, 55, 0.10),
     inset 0 1px 0 rgba(255,255,255,0.55);
@@ -857,9 +858,8 @@ nav#sideMenu li.home-item:hover svg {
 
 .outfits-layout {
   display: grid;
-  grid-template-columns: minmax(860px, 1fr) 160px 420px;
-  gap: 34px;
-  align-items: start;
+  grid-template-columns: 1.2fr 0.8fr 1.4fr;
+  gap: 32px;
   height: 100%;
 }
 
@@ -878,16 +878,17 @@ nav#sideMenu li.home-item:hover svg {
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 100%;
 }
 
 .outfit-try-panel {
-  min-height: 100%;
-  border-radius: 26px;
-  background: rgba(255,255,255,0.36);
-  border: 1px solid rgba(255,255,255,0.28);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  width: 100%;
+  border-radius: 24px;
+  padding: 20px;
+
+  background: rgba(255,255,255,0.85);
+  backdrop-filter: blur(20px);
+
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
 }
 
 .outfits-sidebar {
