@@ -185,7 +185,7 @@ nav#sideMenu li.home-item:hover svg {
 ========================= */
 .closet-panel,
 .outfits-panel {
-  width: min(1180px, calc(100vw - 32px));
+  width: min(1500px, calc(100vw - 32px));
   margin: 18px auto;
   box-sizing: border-box;
 }
