@@ -693,9 +693,18 @@ function renderOutfits() {
 
         <div class="outfit-try-center">
           <button class="try-btn" id="tryOnBtn">
-            <span class="try-icon">👔</span>
-            Anprobieren
-          </button>
+  <span class="try-btn-fill"></span>
+
+  <span class="try-btn-content">
+    <span class="try-icon" aria-hidden="true">
+      <svg viewBox="0 0 24 24" fill="none">
+        <path d="M12 5.2c0-1.7 1.3-3 3-3 1.5 0 2.8 1.1 3 2.6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+        <path d="M12.4 6.1 4.2 13.3c-.7.6-.2 1.7.7 1.7h14.2c.9 0 1.4-1.1.7-1.7l-8.2-7.2a1 1 0 0 0-1.2 0Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+      </svg>
+    </span>
+    <span class="try-btn-label">Anprobieren</span>
+  </span>
+</button>
         </div>
 
         <div class="outfit-try-panel">
@@ -715,6 +724,7 @@ function renderOutfits() {
   initOutfitTopFilters();
   initLocalOutfitFilters();
   initSaveOutfitButton();
+  initTryOnButton();
 }
 
 
@@ -1212,6 +1222,28 @@ function initLocalOutfitFilters() {
       rerenderAllRondells();
     });
   }
+}
+
+function initTryOnButton() {
+  const tryBtn = document.getElementById("tryOnBtn");
+  if (!tryBtn) return;
+
+  tryBtn.addEventListener("click", () => {
+    if (tryBtn.classList.contains("is-loading")) return;
+
+    tryBtn.classList.remove("is-done");
+    void tryBtn.offsetWidth; // Reflow für sauberen Neustart
+    tryBtn.classList.add("is-loading");
+
+    // Hier später echte Bildgenerierung starten
+    setTimeout(() => {
+      tryBtn.classList.remove("is-loading");
+      tryBtn.classList.add("is-done");
+
+      // Später hier:
+      // generateTryOnImage();
+    }, 2200);
+  });
 }
 // ====== CLOSET ======
 function renderCloset(initialFilter = "Alle") {
